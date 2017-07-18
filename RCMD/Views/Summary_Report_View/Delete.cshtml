@@ -1,0 +1,240 @@
+﻿@model RCMD.Models.Summary_Report_View
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Summary_Report_View</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Road_Sction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Road_Sction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quarry_Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quarry_Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chanage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chanage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Offset_Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offset_Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longtiude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longtiude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eatimated_Quantiy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eatimated_Quantiy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OMC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OMC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MDD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MDD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CBR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CBR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SWELL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SWELL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TFV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TFV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SGR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SGR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEVT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEVT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Purpose_of_Material)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Purpose_of_Material)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Road_Section)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Road_Section)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,338 @@
+﻿@model RCMD.Models.Penetration_Test_Data
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<h4>Location Detail | @Html.ActionLink("Penetration Test Data List", "Index") | @Html.ActionLink("Create New Penetration Test Data", "Create") | @Html.ActionLink("Edit Penetration Test Data", "Edit", new { id = Model.ID })</h4>
+<hr />
+<table class="table table-striped table-bordered table-condensed">
+    <tbody>
+
+        <div>
+            <dl class="dl-horizontal">
+                @*<tr>
+                        <td colspan="2">
+                            <input type="submit" value="Edit" class="btn btn-warning col-lg-3 col-lg-offset-0" style="width:150px; height:35px;" onclick="location.href='@Url.Action("Edit", new { id = Model.ID })'" />
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+                        </td>
+                    </tr>*@
+                <tr>
+                    <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ring_Factor)
+                </dt>
+                </td>
+    <td class="col-lg-10">
+        <dd>
+            @Html.DisplayFor(model => model.Ring_Factor)
+        </dd>
+    </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Penetration)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Penetration)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.No_Of_Blows)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.No_Of_Blows)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Dialrdg)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Dialrdg)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Penetration_Load)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Penetration_Load)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Cor_Load)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Cor_Load)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.CBR)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.CBR)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.RDG_Before_Soaking)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.RDG_Before_Soaking)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.RDG_After_Soaking)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.RDG_After_Soaking)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Percent_Swell)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Percent_Swell)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dd>
+                @Html.DisplayNameFor(model => model.Average_Percent_Swell)
+            </dd>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Average_Percent_Swell)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dd>
+                @Html.DisplayNameFor(model => model.Unit)
+            </dd>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Unit)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dd>
+                @Html.DisplayNameFor(model => model.Blow_No)
+            </dd>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Blow_No)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dd>
+                @Html.DisplayNameFor(model => model.Material_Description.Project_Name)
+            </dd>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Material_Description.Project_Name)
+            </dd>
+        </td>
+    </tr>
+    </dl>
+    </div>
+    </tr>
+    </tbody>
+</table>
+<p>
+
+
+</p>
+
+
+
+
+
+
+@*
+
+
+@model RCMD.Models.Penetration_Test_Data
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Penetration_Test_Data</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ring_Factor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ring_Factor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Penetration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Penetration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_Of_Blows)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_Of_Blows)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dialrdg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dialrdg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Penetration_Load)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Penetration_Load)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cor_Load)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cor_Load)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CBR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CBR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RDG_Before_Soaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RDG_Before_Soaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RDG_After_Soaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RDG_After_Soaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Percent_Swell)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Percent_Swell)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Average_Percent_Swell)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Average_Percent_Swell)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blow_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blow_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material_Description.Project_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material_Description.Project_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+*@

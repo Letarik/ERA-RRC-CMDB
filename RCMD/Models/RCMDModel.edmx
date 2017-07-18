@@ -1,0 +1,1582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NationalRoadConstructionMaterialDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aggregate_Crushing_Value_Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description_ID" Type="int" />
+          <Property Name="Sample_No" Type="nchar" MaxLength="10" />
+          <Property Name="Size_Of_Aggregate" Type="nchar" MaxLength="10" />
+          <Property Name="Maximum_Load_Applied" Type="nchar" MaxLength="10" />
+          <Property Name="Duration_Of_Testing" Type="nchar" MaxLength="10" />
+          <Property Name="Weight_Of_Sample_Tested" Type="nchar" MaxLength="10" />
+          <Property Name="Weight_Of_Sample_Retained" Type="nchar" MaxLength="10" />
+          <Property Name="Aggregate_Crushing_Value" Type="nchar" MaxLength="10" />
+          <Property Name="Average_Agg_Crushing_Value" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Density">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description_ID" Type="int" />
+          <Property Name="Density_Trial_No" Type="int" />
+          <Property Name="Water_Added" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Soil_Plus_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Volume_of_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wet_Density_of_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="MDD" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Density_Determination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description_ID" Type="int" />
+          <Property Name="Moisture_ID" Type="int" />
+          <Property Name="Soaking_Condition" Type="nvarchar" MaxLength="20" />
+          <Property Name="Model_Type" Type="nvarchar" MaxLength="40" />
+          <Property Name="Model_No" Type="int" />
+          <Property Name="Weight_Of_Soil_Plus_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Volume_Of_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wet_Density_Of_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Dry_Density_Of_Soil" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="Determination_Of_Flakiness_Index">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description_ID" Type="int" />
+          <Property Name="Sieves_Nominal_Apperture_Size" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Mass_Of_Test_Portion" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Flakiness_Index" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Aggregate" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Flakiness_Index_Weighted_Average" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Total_Weight" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="Determination_OF_LL_PL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location_ID" Type="int" />
+          <Property Name="Test_Number" Type="int" />
+          <Property Name="Container" Type="nchar" MaxLength="10" />
+          <Property Name="Determination_Type" Type="nvarchar" MaxLength="150" />
+          <Property Name="Test_Method" Type="nvarchar" MaxLength="150" />
+          <Property Name="Wt_of_Container_Plus_Wet_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container_Plus_Dry_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Location_ID" Type="int" />
+          <Property Name="WSASDT" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="WSSDAIA" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="MoAIW" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Specific_Gravity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Apparent_Specific_Gravity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Water_Absorption_of_Aggregate" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="District" Type="nvarchar" MaxLength="60" />
+          <Property Name="Road_Section" Type="nvarchar" MaxLength="60" />
+          <Property Name="Quarry_Area" Type="nvarchar" MaxLength="30" />
+          <Property Name="Change" Type="nvarchar" MaxLength="20" />
+          <Property Name="Offset_Distance" Type="nvarchar" MaxLength="10" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="Elevation" Type="float" />
+          <Property Name="Estimated_Quantity" Type="nvarchar" MaxLength="15" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="60" />
+          <Property Name="Test_Result" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Sampled" Type="date" />
+          <Property Name="Date_Tested" Type="date" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Material_Description">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tester_ID" Type="int" />
+          <Property Name="Project_Name" Type="nvarchar" MaxLength="60" />
+          <Property Name="Material_Description" Type="nvarchar(max)" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="60" />
+          <Property Name="Chainage" Type="nvarchar" MaxLength="30" />
+          <Property Name="Tested_At" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sample_Taken_From" Type="nvarchar" MaxLength="30" />
+          <Property Name="Date_Sampled" Type="nchar" MaxLength="10" />
+          <Property Name="Date_Tested" Type="nchar" MaxLength="10" />
+          <Property Name="Sample_No" Type="nchar" MaxLength="10" />
+          <Property Name="Determination" Type="nvarchar" MaxLength="30" />
+          <Property Name="Number_of_Blows" Type="int" />
+          <Property Name="Determination_No" Type="int" />
+          <Property Name="Container" Type="nchar" MaxLength="10" />
+          <Property Name="Wt_Of_Container_Plus_Wet_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Container_Plus_Dry_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Container" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Water" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Dry_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Moisture_Container" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Average" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Soil_Classification" Type="nchar" MaxLength="10" />
+          <Property Name="Liquid_Limit_Average" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Plastic_Limit_Average" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Moisture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description_ID" Type="int" />
+          <Property Name="Density_ID" Type="int" />
+          <Property Name="Container_No" Type="nchar" MaxLength="10" />
+          <Property Name="Wet_Soil_Container" Type="nchar" MaxLength="10" />
+          <Property Name="Dry_Soil_Container" Type="nchar" MaxLength="10" />
+          <Property Name="Weight_of_Water" Type="nchar" MaxLength="10" />
+          <Property Name="Weight_of_Container" Type="nchar" MaxLength="10" />
+          <Property Name="Weight_of_Dry_Soil" Type="nchar" MaxLength="10" />
+          <Property Name="Moisture_Content" Type="nchar" MaxLength="10" />
+          <Property Name="OMC" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NRCMDB.dbo.Moisture_Determination' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Moisture_Determination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Determination_No" Type="int" />
+          <Property Name="Soaking_Condition" Type="nvarchar" MaxLength="20" />
+          <Property Name="Container_Type" Type="nvarchar" MaxLength="40" />
+          <Property Name="Container_No" Type="nvarchar" MaxLength="30" />
+          <Property Name="Wet_Soil_Plus_Container" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Dry_Soil_Plus_Container" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Water" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Container" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Dry_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Moisture_Content" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="AVG_Moisture_Content" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="Particle_Size_Distribution">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description_ID" Type="int" />
+          <Property Name="Sample_Preparation" Type="nvarchar" MaxLength="60" />
+          <Property Name="Method_Of_Sieving" Type="nvarchar" MaxLength="40" />
+          <Property Name="Sieve_Size" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Retained" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Retained_Percent" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Passing_Percent" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Penetration_Test_Data">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material_Description_ID" Type="int" />
+          <Property Name="Ring_Factor" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Penetration" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="No_Of_Blows" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Dialrdg" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Penetration_Load" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Cor_Load" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="CBR" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="RDG_Before_Soaking" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="RDG_After_Soaking" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Percent_Swell" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Average_Percent_Swell" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Unit" Type="nchar" MaxLength="10" />
+          <Property Name="Blow_No" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="Summary_Report">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location_ID" Type="int" />
+          <Property Name="Quarry_Area" Type="nvarchar" MaxLength="150" />
+          <Property Name="Chanage" Type="nvarchar" MaxLength="40" />
+          <Property Name="Offset_Distance" Type="nvarchar" MaxLength="40" />
+          <Property Name="Latitude" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Longtiude" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Eatimated_Quantiy" Type="nvarchar" MaxLength="150" />
+          <Property Name="LL" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="PI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PP" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="GM" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="PM" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="OMC" Type="nvarchar" MaxLength="50" />
+          <Property Name="MDD" Type="nvarchar" MaxLength="50" />
+          <Property Name="CBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SWELL" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACV" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="TFV" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="LAA" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="FI" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="SGR" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="WAT" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ST" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="SEVT" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Purpose_of_Material" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Ten_Percent_Fines_Value">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sample_No" Type="int" />
+          <Property Name="Size_OF_Aggregate" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Load_Achived" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Duration_Of_Testing" Type="nvarchar" MaxLength="30" />
+          <Property Name="Penetration_Of_Plunger" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Sample_Tested" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Sample_Retained" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Material_Passing" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Force_Required_To_Produce" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Average_Force" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wet" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'NRCMDB.dbo.Density_Determination_View' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Density_Determination_View">
+          <Property Name="Moisture_ID" Type="int" />
+          <Property Name="Weight_Of_Soil_Plus_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Weigh_of_Soil" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="Volume_Of_Mold" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Soaking_Condition" Type="nvarchar" MaxLength="20" />
+          <Property Name="Model_Type" Type="nvarchar" MaxLength="40" />
+          <Property Name="Model_No" Type="int" />
+          <Property Name="Wet_Density_Of_Soil" Type="decimal" Precision="38" Scale="18" />
+          <Property Name="Dry_Density_Of_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Material_Description_ID" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NRCMDB.dbo.Determination_0f_LL_PL_End_Resutl_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Determination_0f_LL_PL_End_Resutl_View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Test_Number" Type="int" />
+          <Property Name="Container" Type="nchar" MaxLength="10" />
+          <Property Name="Determination_Type" Type="nvarchar" MaxLength="150" />
+          <Property Name="Test_Method" Type="nvarchar" MaxLength="150" />
+          <Property Name="Wt_of_Container_Plus_Wet_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container_Plus_Dry_Soil" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container" Type="nvarchar" MaxLength="15" />
+          <Property Name="Wt_of_Water" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Wt_of_Dry_Soil" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Moisture_Container" Type="decimal" Precision="38" Scale="18" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NRCMDB.dbo.Summary_Report_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Summary_Report_View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Purpose_of_Material" Type="nvarchar(max)" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Location_ID" Type="int" />
+          <Property Name="Road_Section" Type="nvarchar" MaxLength="60" />
+          <Property Name="Quarry_Area" Type="nvarchar" MaxLength="150" />
+          <Property Name="Chanage" Type="nvarchar" MaxLength="40" />
+          <Property Name="Offset_Distance" Type="nvarchar" MaxLength="40" />
+          <Property Name="Latitude" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Longtiude" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Eatimated_Quantiy" Type="nvarchar" MaxLength="150" />
+          <Property Name="LL" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="PI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PP" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="GM" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="PM" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="OMC" Type="nvarchar" MaxLength="50" />
+          <Property Name="CBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="MDD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SWELL" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACV" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="TFV" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="LAA" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="FI" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="SGR" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="WAT" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ST" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="SEVT" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Test_Result" Type="nvarchar" MaxLength="100" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution">
+          <End Role="Particle_Size_Distribution" Type="Self.Particle_Size_Distribution" Multiplicity="0..1" />
+          <End Role="Aggregate_Crushing_Value_Test" Type="Self.Aggregate_Crushing_Value_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Particle_Size_Distribution">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Aggregate_Crushing_Value_Test">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Density_Determination_Material_Description">
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <End Role="Density_Determination" Type="Self.Density_Determination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Density_Determination">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Density_Determination_Moisture">
+          <End Role="Moisture" Type="Self.Moisture" Multiplicity="0..1" />
+          <End Role="Density_Determination" Type="Self.Density_Determination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moisture">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Density_Determination">
+              <PropertyRef Name="Moisture_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Density_Material_Description">
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <End Role="Density" Type="Self.Density" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Density">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Determination_OF_LL_PL_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Determination_OF_LL_PL" Type="Self.Determination_OF_LL_PL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Determination_OF_LL_PL">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" Type="Self.Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Material_Description_Determination_Of_Flakiness_Index">
+          <End Role="Determination_Of_Flakiness_Index" Type="Self.Determination_Of_Flakiness_Index" Multiplicity="1" />
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Determination_Of_Flakiness_Index">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moisture_Density">
+          <End Role="Density" Type="Self.Density" Multiplicity="0..1" />
+          <End Role="Moisture" Type="Self.Moisture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Density">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moisture">
+              <PropertyRef Name="Density_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moisture_Determination_Material_Description">
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <End Role="Moisture_Determination" Type="Self.Moisture_Determination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moisture_Determination">
+              <PropertyRef Name="Material_Determination_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moisture_Material_Description">
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <End Role="Moisture" Type="Self.Moisture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moisture">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Particle_Size_Distribution_Material_Description">
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <End Role="Particle_Size_Distribution" Type="Self.Particle_Size_Distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Particle_Size_Distribution">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Particle_Size_Distribution_Material_Description1">
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <End Role="Particle_Size_Distribution" Type="Self.Particle_Size_Distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Particle_Size_Distribution">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penetration_Test_Data_Material_Description">
+          <End Role="Material_Description" Type="Self.Material_Description" Multiplicity="0..1" />
+          <End Role="Penetration_Test_Data" Type="Self.Penetration_Test_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Penetration_Test_Data">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Summary_Report_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Summary_Report" Type="Self.Summary_Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Summary_Report">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NationalRoadConstructionMaterialDataModelStoreContainer">
+          <EntitySet Name="Aggregate_Crushing_Value_Test" EntityType="Self.Aggregate_Crushing_Value_Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Density" EntityType="Self.Density" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Density_Determination" EntityType="Self.Density_Determination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Determination_Of_Flakiness_Index" EntityType="Self.Determination_Of_Flakiness_Index" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Determination_OF_LL_PL" EntityType="Self.Determination_OF_LL_PL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" EntityType="Self.Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material_Description" EntityType="Self.Material_Description" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moisture" EntityType="Self.Moisture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Particle_Size_Distribution" EntityType="Self.Particle_Size_Distribution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Penetration_Test_Data" EntityType="Self.Penetration_Test_Data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Summary_Report" EntityType="Self.Summary_Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ten_Percent_Fines_Value" EntityType="Self.Ten_Percent_Fines_Value" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moisture_Determination" EntityType="Self.Moisture_Determination" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Moisture_Determination].[ID] AS [ID], 
+    [Moisture_Determination].[Material_Determination_No] AS [Material_Determination_No], 
+    [Moisture_Determination].[Soaking_Condition] AS [Soaking_Condition], 
+    [Moisture_Determination].[Container_Type] AS [Container_Type], 
+    [Moisture_Determination].[Container_No] AS [Container_No], 
+    [Moisture_Determination].[Wet_Soil_Plus_Container] AS [Wet_Soil_Plus_Container], 
+    [Moisture_Determination].[Dry_Soil_Plus_Container] AS [Dry_Soil_Plus_Container], 
+    [Moisture_Determination].[Weight_Of_Water] AS [Weight_Of_Water], 
+    [Moisture_Determination].[Weight_Of_Container] AS [Weight_Of_Container], 
+    [Moisture_Determination].[Weight_of_Dry_Soil] AS [Weight_of_Dry_Soil], 
+    [Moisture_Determination].[Moisture_Content] AS [Moisture_Content], 
+    [Moisture_Determination].[AVG_Moisture_Content] AS [AVG_Moisture_Content]
+    FROM [dbo].[Moisture_Determination] AS [Moisture_Determination]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Determination_0f_LL_PL_End_Resutl_View" EntityType="Self.Determination_0f_LL_PL_End_Resutl_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Determination_0f_LL_PL_End_Resutl_View].[ID] AS [ID], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Test_Number] AS [Test_Number], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Container] AS [Container], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Determination_Type] AS [Determination_Type], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Test_Method] AS [Test_Method], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Wt_of_Container_Plus_Wet_Soil] AS [Wt_of_Container_Plus_Wet_Soil], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Wt_of_Container_Plus_Dry_Soil] AS [Wt_of_Container_Plus_Dry_Soil], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Wt_of_Container] AS [Wt_of_Container], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Wt_of_Water] AS [Wt_of_Water], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Wt_of_Dry_Soil] AS [Wt_of_Dry_Soil], 
+    [Determination_0f_LL_PL_End_Resutl_View].[Moisture_Container] AS [Moisture_Container]
+    FROM [dbo].[Determination_0f_LL_PL_End_Resutl_View] AS [Determination_0f_LL_PL_End_Resutl_View]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Summary_Report_View" EntityType="Self.Summary_Report_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Summary_Report_View].[Purpose_of_Material] AS [Purpose_of_Material], 
+    [Summary_Report_View].[ID] AS [ID], 
+    [Summary_Report_View].[Location_ID] AS [Location_ID], 
+    [Summary_Report_View].[Road_Section] AS [Road_Section], 
+    [Summary_Report_View].[Quarry_Area] AS [Quarry_Area], 
+    [Summary_Report_View].[Chanage] AS [Chanage], 
+    [Summary_Report_View].[Offset_Distance] AS [Offset_Distance], 
+    [Summary_Report_View].[Latitude] AS [Latitude], 
+    [Summary_Report_View].[Longtiude] AS [Longtiude], 
+    [Summary_Report_View].[Eatimated_Quantiy] AS [Eatimated_Quantiy], 
+    [Summary_Report_View].[LL] AS [LL], 
+    [Summary_Report_View].[PI] AS [PI], 
+    [Summary_Report_View].[SC] AS [SC], 
+    [Summary_Report_View].[PP] AS [PP], 
+    [Summary_Report_View].[GM] AS [GM], 
+    [Summary_Report_View].[PM] AS [PM], 
+    [Summary_Report_View].[OMC] AS [OMC], 
+    [Summary_Report_View].[CBR] AS [CBR], 
+    [Summary_Report_View].[MDD] AS [MDD], 
+    [Summary_Report_View].[SWELL] AS [SWELL], 
+    [Summary_Report_View].[ACV] AS [ACV], 
+    [Summary_Report_View].[TFV] AS [TFV], 
+    [Summary_Report_View].[LAA] AS [LAA], 
+    [Summary_Report_View].[FI] AS [FI], 
+    [Summary_Report_View].[SGR] AS [SGR], 
+    [Summary_Report_View].[WAT] AS [WAT], 
+    [Summary_Report_View].[ST] AS [ST], 
+    [Summary_Report_View].[SEVT] AS [SEVT], 
+    [Summary_Report_View].[Test_Result] AS [Test_Result], 
+    [Summary_Report_View].[Photo] AS [Photo]
+    FROM [dbo].[Summary_Report_View] AS [Summary_Report_View]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution" Association="Self.FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution">
+            <End Role="Particle_Size_Distribution" EntitySet="Particle_Size_Distribution" />
+            <End Role="Aggregate_Crushing_Value_Test" EntitySet="Aggregate_Crushing_Value_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Density_Determination_Material_Description" Association="Self.FK_Density_Determination_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Density_Determination" EntitySet="Density_Determination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Density_Determination_Moisture" Association="Self.FK_Density_Determination_Moisture">
+            <End Role="Moisture" EntitySet="Moisture" />
+            <End Role="Density_Determination" EntitySet="Density_Determination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Density_Material_Description" Association="Self.FK_Density_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Density" EntitySet="Density" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Determination_OF_LL_PL_Location" Association="Self.FK_Determination_OF_LL_PL_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Determination_OF_LL_PL" EntitySet="Determination_OF_LL_PL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location" Association="Self.FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" EntitySet="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Material_Description_Determination_Of_Flakiness_Index" Association="Self.FK_Material_Description_Determination_Of_Flakiness_Index">
+            <End Role="Determination_Of_Flakiness_Index" EntitySet="Determination_Of_Flakiness_Index" />
+            <End Role="Material_Description" EntitySet="Material_Description" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moisture_Density" Association="Self.FK_Moisture_Density">
+            <End Role="Density" EntitySet="Density" />
+            <End Role="Moisture" EntitySet="Moisture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moisture_Determination_Material_Description" Association="Self.FK_Moisture_Determination_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Moisture_Determination" EntitySet="Moisture_Determination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moisture_Material_Description" Association="Self.FK_Moisture_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Moisture" EntitySet="Moisture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Particle_Size_Distribution_Material_Description" Association="Self.FK_Particle_Size_Distribution_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Particle_Size_Distribution" EntitySet="Particle_Size_Distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Particle_Size_Distribution_Material_Description1" Association="Self.FK_Particle_Size_Distribution_Material_Description1">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Particle_Size_Distribution" EntitySet="Particle_Size_Distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penetration_Test_Data_Material_Description" Association="Self.FK_Penetration_Test_Data_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Penetration_Test_Data" EntitySet="Penetration_Test_Data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Summary_Report_Location" Association="Self.FK_Summary_Report_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Summary_Report" EntitySet="Summary_Report" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NationalRoadConstructionMaterialDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NRCMDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Densities" EntityType="NationalRoadConstructionMaterialDataModel.Density" />
+          <EntitySet Name="Density_Determination" EntityType="NationalRoadConstructionMaterialDataModel.Density_Determination" />
+          <EntitySet Name="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" EntityType="NationalRoadConstructionMaterialDataModel.Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" />
+          <EntitySet Name="Material_Description" EntityType="NationalRoadConstructionMaterialDataModel.Material_Description" />
+          <EntitySet Name="Moistures" EntityType="NationalRoadConstructionMaterialDataModel.Moisture" />
+          <EntitySet Name="Particle_Size_Distribution" EntityType="NationalRoadConstructionMaterialDataModel.Particle_Size_Distribution" />
+          <EntitySet Name="Penetration_Test_Data" EntityType="NationalRoadConstructionMaterialDataModel.Penetration_Test_Data" />
+          <AssociationSet Name="FK_Density_Material_Description" Association="NationalRoadConstructionMaterialDataModel.FK_Density_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Density" EntitySet="Densities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moisture_Density" Association="NationalRoadConstructionMaterialDataModel.FK_Moisture_Density">
+            <End Role="Density" EntitySet="Densities" />
+            <End Role="Moisture" EntitySet="Moistures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Density_Determination_Material_Description" Association="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Density_Determination" EntitySet="Density_Determination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Density_Determination_Moisture" Association="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Moisture">
+            <End Role="Moisture" EntitySet="Moistures" />
+            <End Role="Density_Determination" EntitySet="Density_Determination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moisture_Material_Description" Association="NationalRoadConstructionMaterialDataModel.FK_Moisture_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Moisture" EntitySet="Moistures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Particle_Size_Distribution_Material_Description" Association="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Particle_Size_Distribution" EntitySet="Particle_Size_Distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Particle_Size_Distribution_Material_Description1" Association="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description1">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Particle_Size_Distribution" EntitySet="Particle_Size_Distribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penetration_Test_Data_Material_Description" Association="NationalRoadConstructionMaterialDataModel.FK_Penetration_Test_Data_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Penetration_Test_Data" EntitySet="Penetration_Test_Data" />
+          </AssociationSet>
+          <EntitySet Name="Determination_Of_Flakiness_Index" EntityType="NationalRoadConstructionMaterialDataModel.Determination_Of_Flakiness_Index" />
+          <AssociationSet Name="FK_Material_Description_Determination_Of_Flakiness_Index" Association="NationalRoadConstructionMaterialDataModel.FK_Material_Description_Determination_Of_Flakiness_Index">
+            <End Role="Determination_Of_Flakiness_Index" EntitySet="Determination_Of_Flakiness_Index" />
+            <End Role="Material_Description" EntitySet="Material_Description" />
+          </AssociationSet>
+          <EntitySet Name="Moisture_Determination" EntityType="NationalRoadConstructionMaterialDataModel.Moisture_Determination" />
+          <AssociationSet Name="FK_Moisture_Determination_Material_Description" Association="NationalRoadConstructionMaterialDataModel.FK_Moisture_Determination_Material_Description">
+            <End Role="Material_Description" EntitySet="Material_Description" />
+            <End Role="Moisture_Determination" EntitySet="Moisture_Determination" />
+          </AssociationSet>
+          <EntitySet Name="Aggregate_Crushing_Value_Test" EntityType="NationalRoadConstructionMaterialDataModel.Aggregate_Crushing_Value_Test" />
+          <AssociationSet Name="FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution" Association="NationalRoadConstructionMaterialDataModel.FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution">
+            <End Role="Particle_Size_Distribution" EntitySet="Particle_Size_Distribution" />
+            <End Role="Aggregate_Crushing_Value_Test" EntitySet="Aggregate_Crushing_Value_Test" />
+          </AssociationSet>
+          <EntitySet Name="Ten_Percent_Fines_Value" EntityType="NationalRoadConstructionMaterialDataModel.Ten_Percent_Fines_Value" />
+          <EntitySet Name="Locations" EntityType="NationalRoadConstructionMaterialDataModel.Location" />
+          <AssociationSet Name="FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location" Association="NationalRoadConstructionMaterialDataModel.FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" EntitySet="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" />
+          </AssociationSet>
+          <EntitySet Name="Determination_OF_LL_PL" EntityType="NationalRoadConstructionMaterialDataModel.Determination_OF_LL_PL" />
+          <AssociationSet Name="FK_Determination_OF_LL_PL_Location" Association="NationalRoadConstructionMaterialDataModel.FK_Determination_OF_LL_PL_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Determination_OF_LL_PL" EntitySet="Determination_OF_LL_PL" />
+          </AssociationSet>
+          <EntitySet Name="Summary_Report" EntityType="NationalRoadConstructionMaterialDataModel.Summary_Report" />
+          <EntitySet Name="Summary_Report_View" EntityType="NationalRoadConstructionMaterialDataModel.Summary_Report_View" />
+          <AssociationSet Name="FK_Summary_Report_Location" Association="NationalRoadConstructionMaterialDataModel.FK_Summary_Report_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Summary_Report" EntitySet="Summary_Report" />
+          </AssociationSet>
+          <EntitySet Name="Determination_0f_LL_PL_End_Resutl_View" EntityType="NationalRoadConstructionMaterialDataModel.Determination_0f_LL_PL_End_Resutl_View" />
+          </EntityContainer>
+        <EntityType Name="Density">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Density_Trial_No" Type="Int32" />
+          <Property Name="Water_Added" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Soil_Plus_Mold" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Mold" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Volume_of_Mold" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wet_Density_of_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="MDD" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Material_Description_ID" Type="Int32" />
+          <NavigationProperty Name="Material_Description" Relationship="NationalRoadConstructionMaterialDataModel.FK_Density_Material_Description" FromRole="Density" ToRole="Material_Description" />
+          <NavigationProperty Name="Moistures" Relationship="NationalRoadConstructionMaterialDataModel.FK_Moisture_Density" FromRole="Density" ToRole="Moisture" />
+        </EntityType>
+        <EntityType Name="Density_Determination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Moisture_ID" Type="Int32" />
+          <Property Name="Soaking_Condition" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Model_No" Type="Int32" />
+          <Property Name="Weight_Of_Soil_Plus_Mold" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Mold" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Volume_Of_Mold" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wet_Density_Of_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Dry_Density_Of_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Material_Description_ID" Type="Int32" />
+          <NavigationProperty Name="Material_Description" Relationship="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Material_Description" FromRole="Density_Determination" ToRole="Material_Description" />
+          <NavigationProperty Name="Moisture" Relationship="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Moisture" FromRole="Density_Determination" ToRole="Moisture" />
+        </EntityType>
+        <EntityType Name="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Location_ID" Type="Int32" />
+          <Property Name="WSASDT" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WSSDAIA" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="MoAIW" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Specific_Gravity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Apparent_Specific_Gravity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Water_Absorption_of_Aggregate" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="Location" Relationship="NationalRoadConstructionMaterialDataModel.FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location" FromRole="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Material_Description">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tester_ID" Type="Int32" />
+          <Property Name="Project_Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Material_Description1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Purpose" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Chainage" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Tested_At" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sample_Taken_From" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Sampled" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date_Tested" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Sample_No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Determination" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Number_of_Blows" Type="Int32" />
+          <Property Name="Determination_No" Type="Int32" />
+          <Property Name="Container" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Wt_Of_Container_Plus_Wet_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Container_Plus_Dry_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Container" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Water" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_Of_Dry_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Moisture_Container" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Average" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Soil_Classification" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Liquid_Limit_Average" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Plastic_Limit_Average" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Densities" Relationship="NationalRoadConstructionMaterialDataModel.FK_Density_Material_Description" FromRole="Material_Description" ToRole="Density" />
+          <NavigationProperty Name="Density_Determination" Relationship="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Material_Description" FromRole="Material_Description" ToRole="Density_Determination" />
+          <NavigationProperty Name="Moistures" Relationship="NationalRoadConstructionMaterialDataModel.FK_Moisture_Material_Description" FromRole="Material_Description" ToRole="Moisture" />
+          <NavigationProperty Name="Particle_Size_Distribution" Relationship="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description" FromRole="Material_Description" ToRole="Particle_Size_Distribution" />
+          <NavigationProperty Name="Particle_Size_Distribution1" Relationship="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description1" FromRole="Material_Description" ToRole="Particle_Size_Distribution" />
+          <NavigationProperty Name="Penetration_Test_Data" Relationship="NationalRoadConstructionMaterialDataModel.FK_Penetration_Test_Data_Material_Description" FromRole="Material_Description" ToRole="Penetration_Test_Data" />
+          <NavigationProperty Name="Determination_Of_Flakiness_Index" Relationship="NationalRoadConstructionMaterialDataModel.FK_Material_Description_Determination_Of_Flakiness_Index" FromRole="Material_Description" ToRole="Determination_Of_Flakiness_Index" />
+          <NavigationProperty Name="Moisture_Determination" Relationship="NationalRoadConstructionMaterialDataModel.FK_Moisture_Determination_Material_Description" FromRole="Material_Description" ToRole="Moisture_Determination" />
+        </EntityType>
+        <EntityType Name="Moisture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Density_ID" Type="Int32" />
+          <Property Name="Container_No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Wet_Soil_Container" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Dry_Soil_Container" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Weight_of_Water" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Weight_of_Container" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Weight_of_Dry_Soil" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Moisture_Content" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OMC" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Material_Description_ID" Type="Int32" />
+          <NavigationProperty Name="Density" Relationship="NationalRoadConstructionMaterialDataModel.FK_Moisture_Density" FromRole="Moisture" ToRole="Density" />
+          <NavigationProperty Name="Density_Determination" Relationship="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Moisture" FromRole="Moisture" ToRole="Density_Determination" />
+          <NavigationProperty Name="Material_Description" Relationship="NationalRoadConstructionMaterialDataModel.FK_Moisture_Material_Description" FromRole="Moisture" ToRole="Material_Description" />
+        </EntityType>
+        <EntityType Name="Particle_Size_Distribution">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sample_Preparation" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Method_Of_Sieving" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Sieve_Size" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Retained" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Retained_Percent" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Passing_Percent" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Material_Description_ID" Type="Int32" />
+          <NavigationProperty Name="Material_Description" Relationship="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description" FromRole="Particle_Size_Distribution" ToRole="Material_Description" />
+          <NavigationProperty Name="Material_Description1" Relationship="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description1" FromRole="Particle_Size_Distribution" ToRole="Material_Description" />
+          <NavigationProperty Name="Aggregate_Crushing_Value_Test" Relationship="NationalRoadConstructionMaterialDataModel.FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution" FromRole="Particle_Size_Distribution" ToRole="Aggregate_Crushing_Value_Test" />
+        </EntityType>
+        <EntityType Name="Penetration_Test_Data">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ring_Factor" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Penetration" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="No_Of_Blows" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Dialrdg" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Penetration_Load" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Cor_Load" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="CBR" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="RDG_Before_Soaking" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="RDG_After_Soaking" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Percent_Swell" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Average_Percent_Swell" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Blow_No" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Material_Description_ID" Type="Int32" />
+          <NavigationProperty Name="Material_Description" Relationship="NationalRoadConstructionMaterialDataModel.FK_Penetration_Test_Data_Material_Description" FromRole="Penetration_Test_Data" ToRole="Material_Description" />
+        </EntityType>
+        <Association Name="FK_Density_Material_Description">
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Density" Role="Density" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Density">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moisture_Density">
+          <End Type="NationalRoadConstructionMaterialDataModel.Density" Role="Density" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Moisture" Role="Moisture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Density">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moisture">
+              <PropertyRef Name="Density_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Density_Determination_Material_Description">
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Density_Determination" Role="Density_Determination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Density_Determination">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Density_Determination_Moisture">
+          <End Type="NationalRoadConstructionMaterialDataModel.Moisture" Role="Moisture" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Density_Determination" Role="Density_Determination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moisture">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Density_Determination">
+              <PropertyRef Name="Moisture_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moisture_Material_Description">
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Moisture" Role="Moisture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moisture">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Particle_Size_Distribution_Material_Description">
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Particle_Size_Distribution" Role="Particle_Size_Distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Particle_Size_Distribution">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Particle_Size_Distribution_Material_Description1">
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Particle_Size_Distribution" Role="Particle_Size_Distribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Particle_Size_Distribution">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penetration_Test_Data_Material_Description">
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Penetration_Test_Data" Role="Penetration_Test_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Penetration_Test_Data">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Determination_Of_Flakiness_Index">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Material_Description_ID" Type="Int32" />
+          <Property Name="Sieves_Nominal_Apperture_Size" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Mass_Of_Test_Portion" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Flakiness_Index" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Aggregate" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Flakiness_Index_Weighted_Average" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Total_Weight" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="Material_Description" Relationship="NationalRoadConstructionMaterialDataModel.FK_Material_Description_Determination_Of_Flakiness_Index" FromRole="Determination_Of_Flakiness_Index" ToRole="Material_Description" />
+        </EntityType>
+        <Association Name="FK_Material_Description_Determination_Of_Flakiness_Index">
+          <End Type="NationalRoadConstructionMaterialDataModel.Determination_Of_Flakiness_Index" Role="Determination_Of_Flakiness_Index" Multiplicity="1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Determination_Of_Flakiness_Index">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Moisture_Determination">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Material_Determination_No" Type="Int32" />
+          <Property Name="Soaking_Condition" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Container_Type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Container_No" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Wet_Soil_Plus_Container" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Dry_Soil_Plus_Container" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Water" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Container" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_of_Dry_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Moisture_Content" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="AVG_Moisture_Content" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="Material_Description" Relationship="NationalRoadConstructionMaterialDataModel.FK_Moisture_Determination_Material_Description" FromRole="Moisture_Determination" ToRole="Material_Description" />
+        </EntityType>
+        <Association Name="FK_Moisture_Determination_Material_Description">
+          <End Type="NationalRoadConstructionMaterialDataModel.Material_Description" Role="Material_Description" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Moisture_Determination" Role="Moisture_Determination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material_Description">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moisture_Determination">
+              <PropertyRef Name="Material_Determination_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Aggregate_Crushing_Value_Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Material_Description_ID" Type="Int32" />
+          <Property Name="Sample_No" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Size_Of_Aggregate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Maximum_Load_Applied" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Duration_Of_Testing" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Weight_Of_Sample_Tested" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Weight_Of_Sample_Retained" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Aggregate_Crushing_Value" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Average_Agg_Crushing_Value" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Particle_Size_Distribution" Relationship="NationalRoadConstructionMaterialDataModel.FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution" FromRole="Aggregate_Crushing_Value_Test" ToRole="Particle_Size_Distribution" />
+        </EntityType>
+        <Association Name="FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution">
+          <End Type="NationalRoadConstructionMaterialDataModel.Particle_Size_Distribution" Role="Particle_Size_Distribution" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Aggregate_Crushing_Value_Test" Role="Aggregate_Crushing_Value_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Particle_Size_Distribution">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Aggregate_Crushing_Value_Test">
+              <PropertyRef Name="Material_Description_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ten_Percent_Fines_Value">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sample_No" Type="Int32" />
+          <Property Name="Size_OF_Aggregate" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Load_Achived" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Duration_Of_Testing" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Penetration_Of_Plunger" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Sample_Tested" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Weight_Of_Sample_Retained" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Material_Passing" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Force_Required_To_Produce" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Average_Force" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wet" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Material_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Road_Section" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Quarry_Area" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Change" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Offset_Distance" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Elevation" Type="Double" />
+          <Property Name="Estimated_Quantity" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Purpose" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Test_Result" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Sampled" Type="DateTime" Precision="0" />
+          <Property Name="Date_Tested" Type="DateTime" Precision="0" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" Relationship="NationalRoadConstructionMaterialDataModel.FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location" FromRole="Location" ToRole="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" />
+          <NavigationProperty Name="Determination_OF_LL_PL" Relationship="NationalRoadConstructionMaterialDataModel.FK_Determination_OF_LL_PL_Location" FromRole="Location" ToRole="Determination_OF_LL_PL" />
+          <NavigationProperty Name="Summary_Report" Relationship="NationalRoadConstructionMaterialDataModel.FK_Summary_Report_Location" FromRole="Location" ToRole="Summary_Report" />
+        </EntityType>
+        <Association Name="FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location">
+          <End Type="NationalRoadConstructionMaterialDataModel.Location" Role="Location" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" Role="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Determination_OF_LL_PL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location_ID" Type="Int32" />
+          <Property Name="Test_Number" Type="Int32" />
+          <Property Name="Container" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Determination_Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Test_Method" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Wt_of_Container_Plus_Wet_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container_Plus_Dry_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="Location" Relationship="NationalRoadConstructionMaterialDataModel.FK_Determination_OF_LL_PL_Location" FromRole="Determination_OF_LL_PL" ToRole="Location" />
+        </EntityType>
+        <Association Name="FK_Determination_OF_LL_PL_Location">
+          <End Type="NationalRoadConstructionMaterialDataModel.Location" Role="Location" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Determination_OF_LL_PL" Role="Determination_OF_LL_PL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Determination_OF_LL_PL">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Summary_Report">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location_ID" Type="Int32" />
+          <Property Name="Quarry_Area" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Chanage" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Offset_Distance" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Longtiude" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Eatimated_Quantiy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LL" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PP" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="GM" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PM" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="OMC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MDD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SWELL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACV" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="TFV" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="LAA" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="FI" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SGR" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WAT" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ST" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SEVT" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Purpose_of_Material" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Location" Relationship="NationalRoadConstructionMaterialDataModel.FK_Summary_Report_Location" FromRole="Summary_Report" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Summary_Report_View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Purpose_of_Material" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Location_ID" Type="Int32" />
+          <Property Name="Road_Section" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Quarry_Area" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Chanage" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Offset_Distance" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Longtiude" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Eatimated_Quantiy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LL" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PP" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="GM" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PM" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="OMC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MDD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SWELL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACV" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="TFV" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="LAA" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="FI" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SGR" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WAT" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ST" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SEVT" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Test_Result" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Summary_Report_Location">
+          <End Type="NationalRoadConstructionMaterialDataModel.Location" Role="Location" Multiplicity="0..1" />
+          <End Type="NationalRoadConstructionMaterialDataModel.Summary_Report" Role="Summary_Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Summary_Report">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Determination_0f_LL_PL_End_Resutl_View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Test_Number" Type="Int32" />
+          <Property Name="Container" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Determination_Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Test_Method" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Wt_of_Container_Plus_Wet_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container_Plus_Dry_Soil" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Wt_of_Container" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Wt_of_Water" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Wt_of_Dry_Soil" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Moisture_Container" Type="Decimal" Precision="38" Scale="18" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NationalRoadConstructionMaterialDataModelStoreContainer" CdmEntityContainer="NRCMDBEntities">
+          <EntitySetMapping Name="Densities">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Density">
+              <MappingFragment StoreEntitySet="Density">
+                <ScalarProperty Name="Material_Description_ID" ColumnName="Material_Description_ID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="MDD" ColumnName="MDD" />
+                <ScalarProperty Name="Wet_Density_of_Soil" ColumnName="Wet_Density_of_Soil" />
+                <ScalarProperty Name="Volume_of_Mold" ColumnName="Volume_of_Mold" />
+                <ScalarProperty Name="Weight_of_Soil" ColumnName="Weight_of_Soil" />
+                <ScalarProperty Name="Weight_of_Mold" ColumnName="Weight_of_Mold" />
+                <ScalarProperty Name="Weight_of_Soil_Plus_Mold" ColumnName="Weight_of_Soil_Plus_Mold" />
+                <ScalarProperty Name="Water_Added" ColumnName="Water_Added" />
+                <ScalarProperty Name="Density_Trial_No" ColumnName="Density_Trial_No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Density_Determination">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Density_Determination">
+              <MappingFragment StoreEntitySet="Density_Determination">
+                <ScalarProperty Name="Material_Description_ID" ColumnName="Material_Description_ID" />
+                <ScalarProperty Name="Dry_Density_Of_Soil" ColumnName="Dry_Density_Of_Soil" />
+                <ScalarProperty Name="Wet_Density_Of_Soil" ColumnName="Wet_Density_Of_Soil" />
+                <ScalarProperty Name="Volume_Of_Mold" ColumnName="Volume_Of_Mold" />
+                <ScalarProperty Name="Weight_Of_Soil" ColumnName="Weight_Of_Soil" />
+                <ScalarProperty Name="Weight_Of_Mold" ColumnName="Weight_Of_Mold" />
+                <ScalarProperty Name="Weight_Of_Soil_Plus_Mold" ColumnName="Weight_Of_Soil_Plus_Mold" />
+                <ScalarProperty Name="Model_No" ColumnName="Model_No" />
+                <ScalarProperty Name="Model_Type" ColumnName="Model_Type" />
+                <ScalarProperty Name="Soaking_Condition" ColumnName="Soaking_Condition" />
+                <ScalarProperty Name="Moisture_ID" ColumnName="Moisture_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine">
+              <MappingFragment StoreEntitySet="Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine">
+                <ScalarProperty Name="Water_Absorption_of_Aggregate" ColumnName="Water_Absorption_of_Aggregate" />
+                <ScalarProperty Name="Apparent_Specific_Gravity" ColumnName="Apparent_Specific_Gravity" />
+                <ScalarProperty Name="Specific_Gravity" ColumnName="Specific_Gravity" />
+                <ScalarProperty Name="MoAIW" ColumnName="MoAIW" />
+                <ScalarProperty Name="WSSDAIA" ColumnName="WSSDAIA" />
+                <ScalarProperty Name="WSASDT" ColumnName="WSASDT" />
+                <ScalarProperty Name="Location_ID" ColumnName="Location_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material_Description">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Material_Description">
+              <MappingFragment StoreEntitySet="Material_Description">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Plastic_Limit_Average" ColumnName="Plastic_Limit_Average" />
+                <ScalarProperty Name="Liquid_Limit_Average" ColumnName="Liquid_Limit_Average" />
+                <ScalarProperty Name="Soil_Classification" ColumnName="Soil_Classification" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="Moisture_Container" ColumnName="Moisture_Container" />
+                <ScalarProperty Name="Wt_Of_Dry_Soil" ColumnName="Wt_Of_Dry_Soil" />
+                <ScalarProperty Name="Wt_Of_Water" ColumnName="Wt_Of_Water" />
+                <ScalarProperty Name="Wt_Of_Container" ColumnName="Wt_Of_Container" />
+                <ScalarProperty Name="Wt_Of_Container_Plus_Dry_Soil" ColumnName="Wt_Of_Container_Plus_Dry_Soil" />
+                <ScalarProperty Name="Wt_Of_Container_Plus_Wet_Soil" ColumnName="Wt_Of_Container_Plus_Wet_Soil" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Determination_No" ColumnName="Determination_No" />
+                <ScalarProperty Name="Number_of_Blows" ColumnName="Number_of_Blows" />
+                <ScalarProperty Name="Determination" ColumnName="Determination" />
+                <ScalarProperty Name="Sample_No" ColumnName="Sample_No" />
+                <ScalarProperty Name="Date_Tested" ColumnName="Date_Tested" />
+                <ScalarProperty Name="Date_Sampled" ColumnName="Date_Sampled" />
+                <ScalarProperty Name="Sample_Taken_From" ColumnName="Sample_Taken_From" />
+                <ScalarProperty Name="Tested_At" ColumnName="Tested_At" />
+                <ScalarProperty Name="Chainage" ColumnName="Chainage" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="Material_Description1" ColumnName="Material_Description" />
+                <ScalarProperty Name="Project_Name" ColumnName="Project_Name" />
+                <ScalarProperty Name="Tester_ID" ColumnName="Tester_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moistures">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Moisture">
+              <MappingFragment StoreEntitySet="Moisture">
+                <ScalarProperty Name="Material_Description_ID" ColumnName="Material_Description_ID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="OMC" ColumnName="OMC" />
+                <ScalarProperty Name="Moisture_Content" ColumnName="Moisture_Content" />
+                <ScalarProperty Name="Weight_of_Dry_Soil" ColumnName="Weight_of_Dry_Soil" />
+                <ScalarProperty Name="Weight_of_Container" ColumnName="Weight_of_Container" />
+                <ScalarProperty Name="Weight_of_Water" ColumnName="Weight_of_Water" />
+                <ScalarProperty Name="Dry_Soil_Container" ColumnName="Dry_Soil_Container" />
+                <ScalarProperty Name="Wet_Soil_Container" ColumnName="Wet_Soil_Container" />
+                <ScalarProperty Name="Container_No" ColumnName="Container_No" />
+                <ScalarProperty Name="Density_ID" ColumnName="Density_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Particle_Size_Distribution">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Particle_Size_Distribution">
+              <MappingFragment StoreEntitySet="Particle_Size_Distribution">
+                <ScalarProperty Name="Material_Description_ID" ColumnName="Material_Description_ID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Passing_Percent" ColumnName="Passing_Percent" />
+                <ScalarProperty Name="Retained_Percent" ColumnName="Retained_Percent" />
+                <ScalarProperty Name="Weight_Retained" ColumnName="Weight_Retained" />
+                <ScalarProperty Name="Sieve_Size" ColumnName="Sieve_Size" />
+                <ScalarProperty Name="Method_Of_Sieving" ColumnName="Method_Of_Sieving" />
+                <ScalarProperty Name="Sample_Preparation" ColumnName="Sample_Preparation" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Penetration_Test_Data">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Penetration_Test_Data">
+              <MappingFragment StoreEntitySet="Penetration_Test_Data">
+                <ScalarProperty Name="Material_Description_ID" ColumnName="Material_Description_ID" />
+                <ScalarProperty Name="Blow_No" ColumnName="Blow_No" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Average_Percent_Swell" ColumnName="Average_Percent_Swell" />
+                <ScalarProperty Name="Percent_Swell" ColumnName="Percent_Swell" />
+                <ScalarProperty Name="RDG_After_Soaking" ColumnName="RDG_After_Soaking" />
+                <ScalarProperty Name="RDG_Before_Soaking" ColumnName="RDG_Before_Soaking" />
+                <ScalarProperty Name="CBR" ColumnName="CBR" />
+                <ScalarProperty Name="Cor_Load" ColumnName="Cor_Load" />
+                <ScalarProperty Name="Penetration_Load" ColumnName="Penetration_Load" />
+                <ScalarProperty Name="Dialrdg" ColumnName="Dialrdg" />
+                <ScalarProperty Name="No_Of_Blows" ColumnName="No_Of_Blows" />
+                <ScalarProperty Name="Penetration" ColumnName="Penetration" />
+                <ScalarProperty Name="Ring_Factor" ColumnName="Ring_Factor" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Determination_Of_Flakiness_Index">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Determination_Of_Flakiness_Index">
+              <MappingFragment StoreEntitySet="Determination_Of_Flakiness_Index">
+                <ScalarProperty Name="Total_Weight" ColumnName="Total_Weight" />
+                <ScalarProperty Name="Flakiness_Index_Weighted_Average" ColumnName="Flakiness_Index_Weighted_Average" />
+                <ScalarProperty Name="Aggregate" ColumnName="Aggregate" />
+                <ScalarProperty Name="Flakiness_Index" ColumnName="Flakiness_Index" />
+                <ScalarProperty Name="Mass_Of_Test_Portion" ColumnName="Mass_Of_Test_Portion" />
+                <ScalarProperty Name="Sieves_Nominal_Apperture_Size" ColumnName="Sieves_Nominal_Apperture_Size" />
+                <ScalarProperty Name="Material_Description_ID" ColumnName="Material_Description_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moisture_Determination">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Moisture_Determination">
+              <MappingFragment StoreEntitySet="Moisture_Determination">
+                <ScalarProperty Name="AVG_Moisture_Content" ColumnName="AVG_Moisture_Content" />
+                <ScalarProperty Name="Moisture_Content" ColumnName="Moisture_Content" />
+                <ScalarProperty Name="Weight_of_Dry_Soil" ColumnName="Weight_of_Dry_Soil" />
+                <ScalarProperty Name="Weight_Of_Container" ColumnName="Weight_Of_Container" />
+                <ScalarProperty Name="Weight_Of_Water" ColumnName="Weight_Of_Water" />
+                <ScalarProperty Name="Dry_Soil_Plus_Container" ColumnName="Dry_Soil_Plus_Container" />
+                <ScalarProperty Name="Wet_Soil_Plus_Container" ColumnName="Wet_Soil_Plus_Container" />
+                <ScalarProperty Name="Container_No" ColumnName="Container_No" />
+                <ScalarProperty Name="Container_Type" ColumnName="Container_Type" />
+                <ScalarProperty Name="Soaking_Condition" ColumnName="Soaking_Condition" />
+                <ScalarProperty Name="Material_Determination_No" ColumnName="Material_Determination_No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aggregate_Crushing_Value_Test">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Aggregate_Crushing_Value_Test">
+              <MappingFragment StoreEntitySet="Aggregate_Crushing_Value_Test">
+                <ScalarProperty Name="Average_Agg_Crushing_Value" ColumnName="Average_Agg_Crushing_Value" />
+                <ScalarProperty Name="Aggregate_Crushing_Value" ColumnName="Aggregate_Crushing_Value" />
+                <ScalarProperty Name="Weight_Of_Sample_Retained" ColumnName="Weight_Of_Sample_Retained" />
+                <ScalarProperty Name="Weight_Of_Sample_Tested" ColumnName="Weight_Of_Sample_Tested" />
+                <ScalarProperty Name="Duration_Of_Testing" ColumnName="Duration_Of_Testing" />
+                <ScalarProperty Name="Maximum_Load_Applied" ColumnName="Maximum_Load_Applied" />
+                <ScalarProperty Name="Size_Of_Aggregate" ColumnName="Size_Of_Aggregate" />
+                <ScalarProperty Name="Sample_No" ColumnName="Sample_No" />
+                <ScalarProperty Name="Material_Description_ID" ColumnName="Material_Description_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ten_Percent_Fines_Value">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Ten_Percent_Fines_Value">
+              <MappingFragment StoreEntitySet="Ten_Percent_Fines_Value">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Wet" ColumnName="Wet" />
+                <ScalarProperty Name="Average_Force" ColumnName="Average_Force" />
+                <ScalarProperty Name="Force_Required_To_Produce" ColumnName="Force_Required_To_Produce" />
+                <ScalarProperty Name="Material_Passing" ColumnName="Material_Passing" />
+                <ScalarProperty Name="Weight_Of_Sample_Retained" ColumnName="Weight_Of_Sample_Retained" />
+                <ScalarProperty Name="Weight_Of_Sample_Tested" ColumnName="Weight_Of_Sample_Tested" />
+                <ScalarProperty Name="Penetration_Of_Plunger" ColumnName="Penetration_Of_Plunger" />
+                <ScalarProperty Name="Duration_Of_Testing" ColumnName="Duration_Of_Testing" />
+                <ScalarProperty Name="Load_Achived" ColumnName="Load_Achived" />
+                <ScalarProperty Name="Size_OF_Aggregate" ColumnName="Size_OF_Aggregate" />
+                <ScalarProperty Name="Sample_No" ColumnName="Sample_No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date_Tested" ColumnName="Date_Tested" />
+                <ScalarProperty Name="Date_Sampled" ColumnName="Date_Sampled" />
+                <ScalarProperty Name="Test_Result" ColumnName="Test_Result" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="Estimated_Quantity" ColumnName="Estimated_Quantity" />
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Offset_Distance" ColumnName="Offset_Distance" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
+                <ScalarProperty Name="Quarry_Area" ColumnName="Quarry_Area" />
+                <ScalarProperty Name="Road_Section" ColumnName="Road_Section" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Material_Description" ColumnName="Material_Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Determination_OF_LL_PL">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Determination_OF_LL_PL">
+              <MappingFragment StoreEntitySet="Determination_OF_LL_PL">
+                <ScalarProperty Name="Wt_of_Container" ColumnName="Wt_of_Container" />
+                <ScalarProperty Name="Wt_of_Container_Plus_Dry_Soil" ColumnName="Wt_of_Container_Plus_Dry_Soil" />
+                <ScalarProperty Name="Wt_of_Container_Plus_Wet_Soil" ColumnName="Wt_of_Container_Plus_Wet_Soil" />
+                <ScalarProperty Name="Test_Method" ColumnName="Test_Method" />
+                <ScalarProperty Name="Determination_Type" ColumnName="Determination_Type" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Test_Number" ColumnName="Test_Number" />
+                <ScalarProperty Name="Location_ID" ColumnName="Location_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Summary_Report">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Summary_Report">
+              <MappingFragment StoreEntitySet="Summary_Report">
+                <ScalarProperty Name="Purpose_of_Material" ColumnName="Purpose_of_Material" />
+                <ScalarProperty Name="SEVT" ColumnName="SEVT" />
+                <ScalarProperty Name="ST" ColumnName="ST" />
+                <ScalarProperty Name="WAT" ColumnName="WAT" />
+                <ScalarProperty Name="SGR" ColumnName="SGR" />
+                <ScalarProperty Name="FI" ColumnName="FI" />
+                <ScalarProperty Name="LAA" ColumnName="LAA" />
+                <ScalarProperty Name="TFV" ColumnName="TFV" />
+                <ScalarProperty Name="ACV" ColumnName="ACV" />
+                <ScalarProperty Name="SWELL" ColumnName="SWELL" />
+                <ScalarProperty Name="CBR" ColumnName="CBR" />
+                <ScalarProperty Name="MDD" ColumnName="MDD" />
+                <ScalarProperty Name="OMC" ColumnName="OMC" />
+                <ScalarProperty Name="PM" ColumnName="PM" />
+                <ScalarProperty Name="GM" ColumnName="GM" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+                <ScalarProperty Name="SC" ColumnName="SC" />
+                <ScalarProperty Name="PI" ColumnName="PI" />
+                <ScalarProperty Name="LL" ColumnName="LL" />
+                <ScalarProperty Name="Eatimated_Quantiy" ColumnName="Eatimated_Quantiy" />
+                <ScalarProperty Name="Longtiude" ColumnName="Longtiude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Offset_Distance" ColumnName="Offset_Distance" />
+                <ScalarProperty Name="Chanage" ColumnName="Chanage" />
+                <ScalarProperty Name="Quarry_Area" ColumnName="Quarry_Area" />
+                <ScalarProperty Name="Location_ID" ColumnName="Location_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Summary_Report_View">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Summary_Report_View">
+              <MappingFragment StoreEntitySet="Summary_Report_View">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Test_Result" ColumnName="Test_Result" />
+                <ScalarProperty Name="SEVT" ColumnName="SEVT" />
+                <ScalarProperty Name="ST" ColumnName="ST" />
+                <ScalarProperty Name="WAT" ColumnName="WAT" />
+                <ScalarProperty Name="SGR" ColumnName="SGR" />
+                <ScalarProperty Name="FI" ColumnName="FI" />
+                <ScalarProperty Name="LAA" ColumnName="LAA" />
+                <ScalarProperty Name="TFV" ColumnName="TFV" />
+                <ScalarProperty Name="ACV" ColumnName="ACV" />
+                <ScalarProperty Name="SWELL" ColumnName="SWELL" />
+                <ScalarProperty Name="MDD" ColumnName="MDD" />
+                <ScalarProperty Name="CBR" ColumnName="CBR" />
+                <ScalarProperty Name="OMC" ColumnName="OMC" />
+                <ScalarProperty Name="PM" ColumnName="PM" />
+                <ScalarProperty Name="GM" ColumnName="GM" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+                <ScalarProperty Name="SC" ColumnName="SC" />
+                <ScalarProperty Name="PI" ColumnName="PI" />
+                <ScalarProperty Name="LL" ColumnName="LL" />
+                <ScalarProperty Name="Eatimated_Quantiy" ColumnName="Eatimated_Quantiy" />
+                <ScalarProperty Name="Longtiude" ColumnName="Longtiude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Offset_Distance" ColumnName="Offset_Distance" />
+                <ScalarProperty Name="Chanage" ColumnName="Chanage" />
+                <ScalarProperty Name="Quarry_Area" ColumnName="Quarry_Area" />
+                <ScalarProperty Name="Road_Section" ColumnName="Road_Section" />
+                <ScalarProperty Name="Location_ID" ColumnName="Location_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Purpose_of_Material" ColumnName="Purpose_of_Material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Determination_0f_LL_PL_End_Resutl_View">
+            <EntityTypeMapping TypeName="NationalRoadConstructionMaterialDataModel.Determination_0f_LL_PL_End_Resutl_View">
+              <MappingFragment StoreEntitySet="Determination_0f_LL_PL_End_Resutl_View">
+                <ScalarProperty Name="Moisture_Container" ColumnName="Moisture_Container" />
+                <ScalarProperty Name="Wt_of_Dry_Soil" ColumnName="Wt_of_Dry_Soil" />
+                <ScalarProperty Name="Wt_of_Water" ColumnName="Wt_of_Water" />
+                <ScalarProperty Name="Wt_of_Container" ColumnName="Wt_of_Container" />
+                <ScalarProperty Name="Wt_of_Container_Plus_Dry_Soil" ColumnName="Wt_of_Container_Plus_Dry_Soil" />
+                <ScalarProperty Name="Wt_of_Container_Plus_Wet_Soil" ColumnName="Wt_of_Container_Plus_Wet_Soil" />
+                <ScalarProperty Name="Test_Method" ColumnName="Test_Method" />
+                <ScalarProperty Name="Determination_Type" ColumnName="Determination_Type" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Test_Number" ColumnName="Test_Number" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,208 @@
+﻿@model IEnumerable<RCMD.Models.Moisture>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    <h4>
+        Moisture |  @Html.ActionLink("Create New", "Create")
+    </h4>
+    <hr /> 
+</p>
+<table class="table table-striped table-bordered table-condensed">
+    <tbody>
+        <tr>
+            <td align="center">
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Container_No)
+                       
+                    </div>
+                    
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                         @Html.DisplayNameFor(model => model.Wet_Soil_Container)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Dry_Soil_Container)
+                    </div>    
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Weight_of_Water)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Weight_of_Container)    
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Weight_of_Dry_Soil)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Moisture_Content)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.OMC)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Remark)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Density.Remark)
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container-narrow">
+                    <div class="col-md-13">
+                        @Html.DisplayNameFor(model => model.Material_Description.Project_Name)
+                    </div>
+                </div>
+            </td>
+            <td colspan="3">
+            Alternate Actions
+            </td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Container_No)    
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Wet_Soil_Container)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Dry_Soil_Container)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Weight_of_Water)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Weight_of_Container)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Weight_of_Dry_Soil)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Moisture_Content)
+                    
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.OMC)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Remark)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Density.Remark)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            @Html.DisplayFor(modelItem => item.Material_Description.Project_Name)
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            <input type="submit" value="Edit" class="btn btn-warning col-lg-3 col-lg-offset-0" style="width:70px; height:35px;" onclick="location.href='@Url.Action("Edit",new {id = item.ID})'" />
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.ID})*@
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            <input type="submit" value="Details" class="btn btn-success col-lg-3 col-lg-offset-0" style="width:70px; height:35px;" onclick="location.href='@Url.Action("Details",new {id = item.ID})'" />
+                            @*@Html.ActionLink("Details", "Details", new { id = item.ID })*@
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container-narrow">
+                        <div class="col-md-13">
+                            <input type="submit" value="Delete" class="btn btn-danger col-lg-3 col-lg-offset-0" style="width:70px; height:35px;" onclick="location.href='@Url.Action("Delete",new {id = item.ID})'" />
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>   
+</table>

@@ -1,0 +1,114 @@
+﻿@model RCMD.Models.Ten_Percent_Fines_Value
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ten_Percent_Fines_Value</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sample_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sample_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size_OF_Aggregate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size_OF_Aggregate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Load_Achived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Load_Achived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration_Of_Testing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration_Of_Testing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Penetration_Of_Plunger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Penetration_Of_Plunger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight_Of_Sample_Tested)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight_Of_Sample_Tested)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight_Of_Sample_Retained)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight_Of_Sample_Retained)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material_Passing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material_Passing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Force_Required_To_Produce)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Force_Required_To_Produce)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Average_Force)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Average_Force)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

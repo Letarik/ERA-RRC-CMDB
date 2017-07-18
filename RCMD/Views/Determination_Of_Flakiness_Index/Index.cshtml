@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RCMD.Models.Determination_Of_Flakiness_Index>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Material_Description_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sieves_Nominal_Apperture_Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mass_Of_Test_Portion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flakiness_Index)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aggregate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flakiness_Index_Weighted_Average)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Material_Description.Project_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material_Description_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sieves_Nominal_Apperture_Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mass_Of_Test_Portion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flakiness_Index)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aggregate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flakiness_Index_Weighted_Average)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material_Description.Project_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

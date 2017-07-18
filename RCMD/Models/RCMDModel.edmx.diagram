@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dfb88558c8ab4d44821ec80ec5428bd2" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Density" Width="1.5" PointX="3.75" PointY="1.25" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Density_Determination" Width="1.5" PointX="5.75" PointY="1.25" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine" Width="1.5" PointX="3.75" PointY="5.25" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Material_Description" Width="1.5" PointX="6" PointY="12.25" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Moisture" Width="1.5" PointX="9.75" PointY="5.25" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Particle_Size_Distribution" Width="2.75" PointX="11.75" PointY="1.25" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Penetration_Test_Data" Width="1.5" PointX="11.75" PointY="5.25" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Density_Material_Description" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Moisture_Density" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Material_Description" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Density_Determination_Moisture" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Moisture_Material_Description" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Particle_Size_Distribution_Material_Description1" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Penetration_Test_Data_Material_Description" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Determination_Of_Flakiness_Index" Width="1.5" PointX="3.75" PointY="9.625" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Material_Description_Determination_Of_Flakiness_Index" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Moisture_Determination" Width="2" PointX="8.25" PointY="14.375" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Moisture_Determination_Material_Description" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Aggregate_Crushing_Value_Test" Width="1.5" PointX="15.25" PointY="1.5" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Aggregate_Crushing_Value_Test_Particle_Size_Distribution" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Ten_Percent_Fines_Value" Width="1.5" PointX="14.375" PointY="6.25" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Location" Width="1.5" PointX="1.5" PointY="2.375" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Determnation_Of_Specific_Gravity_And_Water_Absorption_Of_Fine_Location" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Determination_OF_LL_PL" Width="1.5" PointX="3.75" PointY="13.125" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Determination_OF_LL_PL_Location" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Summary_Report" Width="1.5" PointX="4.125" PointY="17.5" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Summary_Report_View" Width="1.5" PointX="16" PointY="6.25" />
+        <AssociationConnector Association="NationalRoadConstructionMaterialDataModel.FK_Summary_Report_Location" />
+        <EntityTypeShape EntityType="NationalRoadConstructionMaterialDataModel.Determination_0f_LL_PL_End_Resutl_View" Width="1.5" PointX="14.375" PointY="9.875" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

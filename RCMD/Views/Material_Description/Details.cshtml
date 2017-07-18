@@ -1,0 +1,218 @@
+﻿@model RCMD.Models.Material_Description
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Material_Description</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tester_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tester_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material_Description1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material_Description1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Purpose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Purpose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chainage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chainage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tested_At)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tested_At)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sample_Taken_From)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sample_Taken_From)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Sampled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Sampled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Tested)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Tested)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sample_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sample_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Determination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Determination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Number_of_Blows)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number_of_Blows)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Determination_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Determination_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Container)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Container)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wt_Of_Container_Plus_Wet_Soil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wt_Of_Container_Plus_Wet_Soil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wt_Of_Container_Plus_Dry_Soil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wt_Of_Container_Plus_Dry_Soil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wt_Of_Container)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wt_Of_Container)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wt_Of_Water)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wt_Of_Water)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wt_Of_Dry_Soil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wt_Of_Dry_Soil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Moisture_Container)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moisture_Container)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Average)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Average)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soil_Classification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soil_Classification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Liquid_Limit_Average)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Liquid_Limit_Average)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plastic_Limit_Average)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plastic_Limit_Average)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

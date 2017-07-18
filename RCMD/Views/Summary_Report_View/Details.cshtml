@@ -1,0 +1,403 @@
+﻿@model RCMD.Models.Summary_Report_View
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>Location Detail | @Html.ActionLink("Location List", "Index", "Locations") | @Html.ActionLink("Create New Location", "Create", "Locations")</h4>
+<hr />
+<table class="table table-striped table-bordered table-condensed">
+    <tbody>
+
+        <div>
+
+            <dl class="dl-horizontal">
+                <tr>
+                    <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Road_Section)
+                </dt>
+                </td>
+    <td>
+        <dd>
+            @Html.DisplayFor(model => model.Road_Section)
+        </dd>
+    </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Purpose_of_Material)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Purpose_of_Material)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Quarry_Area)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Quarry_Area)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Chanage)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Chanage)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Offset_Distance)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Offset_Distance)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Latitude)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Longtiude)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Longtiude)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Eatimated_Quantiy)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.Eatimated_Quantiy)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.LL)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.LL)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.PI)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.PI)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.SC)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.SC)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.PP)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.PP)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.GM)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.GM)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.PM)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.PM)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.OMC)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.OMC)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.MDD)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.MDD)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.CBR)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.CBR)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.SWELL)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.SWELL)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.TFV)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.TFV)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.ACV)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.ACV)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.LAA)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.LAA)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.FI)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.FI)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.SGR)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.SGR)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.WAT)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.WAT)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.ST)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.ST)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.SEVT)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                @Html.DisplayFor(model => model.SEVT)
+            </dd>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <dt>
+                @Html.DisplayNameFor(model => model.Photo)
+            </dt>
+        </td>
+        <td>
+            <dd>
+                <img src="~/Uploads/@Model.Photo" alt="Captured Photo" height="200px" width="200px" />
+                @*@Html.DisplayFor(model => model.Photo)*@
+            </dd>
+        </td>
+    </tr>
+    @*<tr>
+        <td colspan="2">
+            <div>
+                <div id="reportViewer1">
+                    loading...
+                </div>
+
+      <script type="text/javascript">
+
+           (function () {
+               var viewer = document.getElementById(reportViewer1);
+               window.alert();
+               viewer.telerik_ReportViewer({
+                        // The URL of the service which will serve reports.
+                        // The URL corresponds to the name of the controller class (ReportsController).
+                        // For more information on how to configure the service please check http://www.telerik.com/help/reporting/telerik-reporting-rest-conception.html.
+                        serviceUrl: "api/reports/",
+
+                        // The URL for the report viewer template. The template can be edited -
+                        // new functionalities can be added and unneeded ones can be removed.
+                        // For more information please check http://www.telerik.com/help/reporting/html5-report-viewer-templates.html.
+                        // templateUrl: 'ReportViewer/templates/telerikReportViewerTemplate.html',
+
+                        //ReportSource - report description
+                        reportSource: {
+
+                            // The report can be set to a report file name (.trdx or .trdp report definition)
+                            // or CLR type name (report class definition).
+                            
+                            report: "RCMD.Reports.Report1, RCMD.Reports",
+
+                            // Parameters name value dictionary
+                            parameters: {}
+                        },
+
+                        // Specifies whether the viewer is in interactive or print preview mode.
+                        // PRINT_PREVIEW - Displays the paginated report as if it is printed on paper. Interactivity is not enabled.
+                        // INTERACTIVE - Displays the report in its original width and height without paging. Additionally interactivity is enabled.
+                        viewMode: telerikReportViewer.ViewModes.INTERACTIVE,
+
+                        // Sets the scale mode of the viewer.
+                        // Three modes exist currently:
+                        // FIT_PAGE - The whole report will fit on the page (will zoom in or out), regardless of its width and height.
+                        // FIT_PAGE_WIDTH - The report will be zoomed in or out so that the width of the screen and the width of the report match.
+                        // SPECIFIC - Uses the scale to zoom in and out the report.
+                        scaleMode: telerikReportViewer.ScaleModes.SPECIFIC,
+
+                        // Zoom in and out the report using the scale
+                        // 1.0 is equal to 100%, i.e. the original size of the report
+                        scale: 1.0,
+                    });
+            });
+                </script>
+            </div>
+        </td>
+        </tr>*@
+    </dl>
+    </div>
+    </tbody>
+</table>
+        <p>
+            @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+            @Html.ActionLink("Back to List", "Index")*@
+        </p>

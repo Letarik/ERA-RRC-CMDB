@@ -1,0 +1,106 @@
+﻿@model RCMD.Models.Moisture_Determination
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Moisture_Determination</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Soaking_Condition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soaking_Condition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Container_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Container_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Container_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Container_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wet_Soil_Plus_Container)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wet_Soil_Plus_Container)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dry_Soil_Plus_Container)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dry_Soil_Plus_Container)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight_Of_Water)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight_Of_Water)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight_Of_Container)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight_Of_Container)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight_of_Dry_Soil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight_of_Dry_Soil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Moisture_Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moisture_Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVG_Moisture_Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVG_Moisture_Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material_Description.Project_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material_Description.Project_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

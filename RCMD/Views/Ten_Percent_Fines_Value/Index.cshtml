@@ -1,0 +1,99 @@
+﻿@model IEnumerable<RCMD.Models.Ten_Percent_Fines_Value>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sample_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size_OF_Aggregate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Load_Achived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration_Of_Testing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Penetration_Of_Plunger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight_Of_Sample_Tested)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight_Of_Sample_Retained)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Material_Passing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Force_Required_To_Produce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Average_Force)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sample_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size_OF_Aggregate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Load_Achived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration_Of_Testing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Penetration_Of_Plunger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight_Of_Sample_Tested)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight_Of_Sample_Retained)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material_Passing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Force_Required_To_Produce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Average_Force)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remark)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

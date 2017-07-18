@@ -1,0 +1,93 @@
+﻿@model IEnumerable<RCMD.Models.Moisture_Determination>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Soaking_Condition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Container_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Container_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wet_Soil_Plus_Container)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dry_Soil_Plus_Container)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight_Of_Water)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight_Of_Container)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight_of_Dry_Soil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Moisture_Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AVG_Moisture_Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Material_Description.Project_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soaking_Condition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Container_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Container_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wet_Soil_Plus_Container)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dry_Soil_Plus_Container)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight_Of_Water)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight_Of_Container)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight_of_Dry_Soil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moisture_Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AVG_Moisture_Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material_Description.Project_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

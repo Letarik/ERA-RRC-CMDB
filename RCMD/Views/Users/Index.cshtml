@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (ViewBag.displayMenu == "1")
+{
+    <h1>Welcome Administrator. Now you can create user Role.</h1>
+    <h3>
+        @Html.ActionLink("Manage Role", "Index", "Role")
+    </h3>
+}
+@if (ViewBag.displayMenu == "2")
+{
+    <h3>
+        @Html.ActionLink("Determination of LL & PL Index", "Index", "Determination_OF_LL_PL")
+    </h3>
+}
+@if (ViewBag.displayMenu == "3")
+{
+    <h3>
+        @Html.ActionLink("Determination of LL & PL Index", "Index", "Determination_OF_LL_PL")
+    </h3>
+}
+@if (ViewBag.displayMenu == "4")
+{
+
+   <div class="row">
+       <link href="@Url.Content("~/Content/bootstrap_era.min")" rel="stylesheet"> @*For left panel bootstrap design*@
+       <link href="@Url.Content("~/Content/Site_era.css")" rel="stylesheet" type="text/css" /> @*For over all page styling*@
+       <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script> @*For top panel e.g regional sales status*@
+       
+       <div class="container-fluid"><!--open container-->           
+             <div class="row row-offcanvas row-offcanvas-left"><!--open row-->
+                 <div id="nav-section" class="col-xs-12 column"><!--open nav column-->
+                 <div class="navbar-default">
+                         <button id="toggle-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                             <span class="icon-bar"></span>
+                             <span class="icon-bar"></span>
+                             <span class="icon-bar"></span>
+                         </button>
+                 </div>
+                     <h1 id="dash-logo" class="center-block">RCM Dash Board</h1>
+                     <div class="collapse navbar-collapse" id="sidebar-nav" role="navigation">
+                         <ul class="nav">
+                             <li id=""><a href="@(Url.Action("Index", "Locations"))"><span class="icon icon-chart-column"></span>Add Location</a></li>
+                             <li id=""><a href="@(Url.Action("Index", "Summary_Report"))"><span class="icon icon-star-empty"></span>Add Summary Report</a></li>
+                             <li id=""><a href="@(Url.Action("Index", "Determination_OF_LL_PL"))"><span class="icon icon-faves"></span>Add Determination of LL & PL Index</a></li>
+                             <li id=""><a href="@(Url.Action("About", "Home"))"><span class="icon icon-info"></span>About</a></li>
+                         </ul>
+                     </div>
+                     @*<h3>
+                         @Html.ActionLink("Add Location", "Index", "Locations") <br /><br />
+                         @Html.ActionLink("Add Summary Report", "Index", "Summary_Report") <br /><br />
+                         @Html.ActionLink("Add Determination of LL & PL Index", "Index", "Determination_OF_LL_PL")
+                     </h3>*@
+                    </div><!--close left column-->
+               </div><!--close row-->
+        </div> <!--close container-->
+    </div>
+}
+        else
+        {
+        @*<h2>  Welcome <strong>@ViewBag.Name</strong> :) .Module under construction. We will back soon </h2>*@
+        }
+

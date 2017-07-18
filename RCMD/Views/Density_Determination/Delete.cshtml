@@ -1,0 +1,167 @@
+﻿@model RCMD.Models.Density_Determination
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <h4>Delete Location | @Html.ActionLink("Density Determination List", "Index") | @Html.ActionLink("Create New Location", "Create")</h4>
+    <h5 style="color:red">Are you sure you want to delete this location?</h5>
+    <hr />
+    <table class="table table-striped table-bordered table-condensed">
+        <tbody>
+
+            <dl class="dl-horizontal">
+
+            <tr>
+            
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Soaking_Condition)
+                </dt>
+            </td>
+
+            <td class="col-lg-10">
+                <dd>
+                   @Html.DisplayFor(model => model.Soaking_Condition)
+                </dd>
+            </td>
+
+           </tr>
+
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Model_Type)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Model_Type)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Model_No)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Model_No)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Weight_Of_Soil_Plus_Mold)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Weight_Of_Soil_Plus_Mold)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Weight_Of_Mold)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Weight_Of_Mold)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Weight_Of_Soil)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Weight_Of_Soil)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Volume_Of_Mold)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Volume_Of_Mold)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Wet_Density_Of_Soil)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Wet_Density_Of_Soil)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Dry_Density_Of_Soil)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Dry_Density_Of_Soil)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Material_Description.Project_Name)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Material_Description.Project_Name)
+                </dd>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Moisture.Container_No)
+                </dt>
+            </td>
+            <td>
+                <dd>
+                    @Html.DisplayFor(model => model.Moisture.Container_No)
+                </dd>
+            </td>
+        </tr>
+             </tbody>
+            </table>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger col-lg-3 col-lg-offset-0" style="width:70px; height:35px;" />
+                    <br />
+                    @*<input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")*@
+                </div>
+            }
+</div>

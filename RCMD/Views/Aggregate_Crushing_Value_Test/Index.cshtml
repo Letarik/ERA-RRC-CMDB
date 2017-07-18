@@ -1,0 +1,81 @@
+﻿@model IEnumerable<RCMD.Models.Aggregate_Crushing_Value_Test>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sample_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size_Of_Aggregate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maximum_Load_Applied)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration_Of_Testing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight_Of_Sample_Tested)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight_Of_Sample_Retained)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aggregate_Crushing_Value)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Average_Agg_Crushing_Value)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Particle_Size_Distribution.Sample_Preparation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sample_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size_Of_Aggregate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maximum_Load_Applied)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration_Of_Testing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight_Of_Sample_Tested)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight_Of_Sample_Retained)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aggregate_Crushing_Value)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Average_Agg_Crushing_Value)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Particle_Size_Distribution.Sample_Preparation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
