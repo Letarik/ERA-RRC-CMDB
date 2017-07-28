@@ -316,8 +316,15 @@
     <Compile Include="Views\Determination_0f_LL_PL_End_Resutl_ViewController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap_era.min.css" />
-    <Content Include="Content\Site_era.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\kendo.common.min.css" />
+    <Content Include="Content\kendo.dataviz.metro.min.css" />
+    <Content Include="Content\kendo.dataviz.min.css" />
+    <Content Include="Content\kendo.metro.min.css" />
+    <Content Include="Content\modal.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\TabStyleSheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\RCMDModel.Context.tt">
@@ -340,30 +347,68 @@
     <Content Include="Models\RCMDModel.edmx.diagram">
       <DependentUpon>RCMDModel.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Content\Fonts\icomoon.eot" />
+    <Content Include="Content\Fonts\icomoon.svg" />
+    <Content Include="Content\Fonts\icomoon.ttf" />
+    <Content Include="Content\Fonts\icomoon.woff" />
     <Content Include="ReportViewer\js\telerikReportViewer-11.1.17.614.js" />
     <Content Include="ReportViewer\js\telerikReportViewer-11.1.17.614.min.js" />
     <Content Include="ReportViewer\js\telerikReportViewer.kendo-11.1.17.614.min.js" />
-    <Content Include="Scripts\ai.1.0.9-build01279.js" />
-    <Content Include="Scripts\ai.1.0.9-build01279.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\chroma.min.js" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo.all.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
+    <Content Include="Scripts\kendo.aspnetmvc.min.js" />
     <Content Include="Scripts\kendo.modernizr.custom.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Uploads\25+620 Muketuri-Lemi\25+620 Muketuri-Lemi.JPG" />
+    <Content Include="Uploads\Abergele\Abergele.JPG" />
+    <Content Include="Uploads\Adiabun%28Tseuya%29\Adiabun%28Tseuya%29.JPG" />
+    <Content Include="Uploads\Adigrat %28Betharet%29\Adigrat %28Betharet%29.JPG" />
+    <Content Include="Uploads\Amaro %28Burji%29\Amaro %28Burji%29.jpg" />
+    <Content Include="Uploads\Amaro%28kela%29\Amaro%28kela%29.jpg" />
+    <Content Include="Uploads\Beri Teklay\Beri Teklay.JPG" />
+    <Content Include="Uploads\Bizet %28Azera%29\Bizet %28Azera%29.JPG" />
+    <Content Include="Uploads\Boricha\Boricha.jpg" />
+    <Content Include="Uploads\Chagel\Chagel.JPG" />
+    <Content Include="Uploads\Chrysanthemum\Chrysanthemum.jpg" />
+    <Content Include="Uploads\Desert\Desert.jpg" />
+    <Content Include="Uploads\Enda mikael\Enda mikael.JPG" />
+    <Content Include="Uploads\Feshgenet\Feshgenet.jpg" />
+    <Content Include="Uploads\Gebreal Mazoria\Gebreal Mazoria.JPG" />
+    <Content Include="Uploads\Hydrangeas\Hydrangeas.jpg" />
+    <Content Include="Uploads\index3\index3.jpg" />
+    <Content Include="Uploads\Jellyfish\Jellyfish.jpg" />
+    <Content Include="Uploads\Kela 77\Kela 77.JPG" />
+    <Content Include="Uploads\Kela-75\Kela-75.JPG" />
+    <Content Include="Uploads\Koala\Koala.jpg" />
+    <Content Include="Uploads\Korem%28Afera%29\Korem%28Afera%29.JPG" />
+    <Content Include="Uploads\Lemon\Lemon.JPG" />
+    <Content Include="Uploads\Lighthouse\Lighthouse.jpg" />
+    <Content Include="Uploads\Mekele %28Agulae%29\Mekele %28Agulae%29.JPG" />
+    <Content Include="Uploads\Muketuri-Koeti\Muketuri-Koeti.JPG" />
+    <Content Include="Uploads\Muketuri-Lemi\Muketuri-Lemi.JPG" />
+    <Content Include="Uploads\Penguins\Penguins.jpg" />
+    <Content Include="Uploads\Robgebeya-Tulubolo\Robgebeya-Tulubolo.JPG" />
+    <Content Include="Uploads\Tiya\Tiya.JPG" />
+    <Content Include="Uploads\Tolay-Junc-Tolay\Tolay-Junc-Tolay.JPG" />
+    <Content Include="Uploads\Tulips\Tulips.jpg" />
+    <Content Include="Uploads\Waja%28Rayabeer%29\Waja%28Rayabeer%29.JPG" />
+    <Content Include="Uploads\Zalambesa%28Fatsi%29\Zalambesa%28Fatsi%29.JPG" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -490,8 +535,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

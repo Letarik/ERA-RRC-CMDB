@@ -3,44 +3,70 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-   
-   
+    <title>@ViewBag.Title ERRC-CMDB</title>
+  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet"> 
+    <link href="@Url.Content("~/Content/kendo.common.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/kendo.metro.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/kendo.dataviz.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/kendo.dataviz.metro.min.css")" rel="stylesheet">
+    <script src="@Url.Content("~/Content/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Content/kendo.aspnetmvc.min.js")"></script>
     
+    <script src="@Url.Content("~/Content/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap.min.js")"></script>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" /> @*For over all page styling*@
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script> @*For top panel e.g regional sales status*@  
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Road Constructin Material Database", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+ 
 
-        </div>
-    </div>
-    <div>
-        @RenderBody() 
-        @*<hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Ethiopian Roads Authority Road Research Construction Material Application</p>
-        </footer>*@
-    </div>
+        <div class="container-fluid">
+            <!--open container-->
+            <div class="row row-offcanvas row-offcanvas-left">
+                <!--open row-->
+                <div id="nav-section" class="col-xs-12 column">
+                    <!--open nav column-->
+                    <div class="navbar-default">
+                        <button id="toggle-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <h1 id="dash-logo" class="center-block"><img src="@Url.Content("~/Content/era_logo.png")" style="width:40px;height:40px;" alt="Logo">ERA&#183;RCM&#183;Dash</h1>
+                    <div class="collapse navbar-collapse" id="sidebar-nav" role="navigation">
+                        <ul class="nav">
+                            <li id="ProductsAndOrders"><a href="@(Url.Action("Index","Summary_Report"))"><i class="material-icons md-18">list</i>Summary Report</a></li>
+                            <li id="RegionalSalesStatus"><a href="@(Url.Action("Index","Locations"))"><i class="material-icons md-18">add_location</i>Add Location</a></li>
+                            <li id="TeamEfficiency"><a href="@(Url.Action("Index","Determination_OF_LL_PL"))"><i class="material-icons">checklist</i>LL & PI</a></li>
+                            <li id="About"><a href="@(Url.Action("About", "Home"))"><span class="icon icon-info"></span>About</a></li>
+                        </ul>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+
+                    </div>
+
+                </div><!--close left column-->
+
+
+                <div id="main-section" class="col-xs-12 column">
+                    <!--open main column-->
+                    @RenderBody()
+                </div><!--close main column-->
+
+            </div><!--close row-->
+        </div><!--close container-->
+
+        @*<script>
+            $(document).ready(function () {         
+                $('[data-toggle=offcanvas]').click(function () {
+                    $('.row-offcanvas').toggleClass('active');
+                });
+            });
+        </script>*@
+
 </body>
 </html>

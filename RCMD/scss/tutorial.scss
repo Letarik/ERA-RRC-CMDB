@@ -1,0 +1,86 @@
+/* ========================================================================
+ * Tutorial specific styling
+ *
+ * @see: css/default.css file for generic CSS
+ * ========================================================================
+ * Copyright 2016 Bootbites.com (unless otherwise stated)
+ * For license information see: http://bootbites.com/license
+ * ======================================================================== */
+
+// Import variables & mixins
+@import '_variables';
+@import '_mixins';
+
+/* ==================================================
+  Fullscreen Background & Slideshows
+  ================================================== */
+
+// Screen Width
+// --------------------------------
+#viewportsize {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  color: white;
+  padding: 5px;
+}
+
+// Niceness
+// --------------------------------
+.navbar-toggler {
+  color: white;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+// Collapse navbar-item fix
+// @see: https://github.com/twbs/bootstrap/issues/17250
+// --------------------------------
+.navbar-toggleable-xs {
+  @media (max-width: 543px) {
+    clear: both;
+    
+    .navbar-nav {
+      float: none !important;
+    } 
+    .navbar-nav .nav-item + .nav-item {
+      margin-left: 0;
+    }
+    .navbar-nav .nav-item {
+      float: none;
+    }
+  }
+}
+.navbar-toggleable-sm {
+  @media (max-width: 767px) {
+    clear: both;
+    
+    .navbar-nav {
+      float: none !important;
+    }    
+    .navbar-nav .nav-item + .nav-item {
+      margin-left: 0;
+    }
+    .navbar-nav .nav-item {
+      float: none;
+    }
+  }
+}
+.navbar-toggleable-md {
+  @media (max-width: 991px) {
+    clear: both;
+
+    .navbar-nav {
+      float: none !important;
+    }    
+    .navbar-nav .nav-item + .nav-item {
+      margin-left: 0;
+    }
+    .navbar-nav .nav-item {
+      float: none;
+    }
+  }
+}

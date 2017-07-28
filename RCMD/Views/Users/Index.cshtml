@@ -25,40 +25,97 @@
 }
 @if (ViewBag.displayMenu == "4")
 {
-
-   <div class="row">
-       <link href="@Url.Content("~/Content/bootstrap_era.min")" rel="stylesheet"> @*For left panel bootstrap design*@
-       <link href="@Url.Content("~/Content/Site_era.css")" rel="stylesheet" type="text/css" /> @*For over all page styling*@
-       <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script> @*For top panel e.g regional sales status*@
-       
-       <div class="container-fluid"><!--open container-->           
-             <div class="row row-offcanvas row-offcanvas-left"><!--open row-->
-                 <div id="nav-section" class="col-xs-12 column"><!--open nav column-->
-                 <div class="navbar-default">
-                         <button id="toggle-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                             <span class="icon-bar"></span>
-                             <span class="icon-bar"></span>
-                             <span class="icon-bar"></span>
-                         </button>
-                 </div>
-                     <h1 id="dash-logo" class="center-block">RCM Dash Board</h1>
-                     <div class="collapse navbar-collapse" id="sidebar-nav" role="navigation">
-                         <ul class="nav">
-                             <li id=""><a href="@(Url.Action("Index", "Locations"))"><span class="icon icon-chart-column"></span>Add Location</a></li>
-                             <li id=""><a href="@(Url.Action("Index", "Summary_Report"))"><span class="icon icon-star-empty"></span>Add Summary Report</a></li>
-                             <li id=""><a href="@(Url.Action("Index", "Determination_OF_LL_PL"))"><span class="icon icon-faves"></span>Add Determination of LL & PL Index</a></li>
-                             <li id=""><a href="@(Url.Action("About", "Home"))"><span class="icon icon-info"></span>About</a></li>
-                         </ul>
-                     </div>
-                     @*<h3>
-                         @Html.ActionLink("Add Location", "Index", "Locations") <br /><br />
-                         @Html.ActionLink("Add Summary Report", "Index", "Summary_Report") <br /><br />
-                         @Html.ActionLink("Add Determination of LL & PL Index", "Index", "Determination_OF_LL_PL")
-                     </h3>*@
-                    </div><!--close left column-->
-               </div><!--close row-->
-        </div> <!--close container-->
+    <div id="main-section-header" class="row">
+        <h2 id="team-efficiency" class="col-xs-3">Ethiopian Road Research Center Constriction Material Database</h2>
     </div>
+   
+   <link href="@Url.Content("~/Content/TabStyleSheet.css")" rel="stylesheet">
+    <section style="background:#efefe9;">
+        <div class="container">
+            <div class="row">
+                <div class="board">
+                   
+                    <div class="board-inner">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <div class="liner"></div>
+                            <li class="active">
+                                <a href="@(Url.Action("Index","Locations"))" data-toggle="tab" title="Location Page">
+                                    <span class="round-tabs one">
+                                        <i class="glyphicon glyphicon-home"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@(Url.Action("Index","Summary_Report"))" data-toggle="tab" title="Summary Report">
+                                    <span class="round-tabs two">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@(Url.Action("Index","Determination_OF_LL_PL"))" data-toggle="tab" title="LL & PL">
+                                    <span class="round-tabs three">
+                                        <i class="glyphicon glyphicon-gift"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            @*<li>
+                                <a href="#settings" data-toggle="tab" title="blah blah">
+                                    <span class="round-tabs four">
+                                        <i class="glyphicon glyphicon-comment"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#doner" data-toggle="tab" title="completed">
+                                    <span class="round-tabs five">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    </span>
+                                </a>
+                            </li>*@
+
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="home">                                                
+                            <p class="text-center">
+                                <a href="@(Url.Action("Index","Home"))" class="btn btn-success btn-outline-rounded green">Log Out&nbsp;<i class="material-icons md-18">power_settings_new</i></a>                               
+                            </p>
+                            <p class="text-center">
+                                <a href="@(Url.Action("Index","Summary_Report"))" class="btn btn-success btn-outline-rounded green">Add Test Result <i class="material-icons md-18">list</i></a>
+                                <a href="@(Url.Action("Index","Summary_Report"))" class="btn btn-success btn-outline-rounded green">Add LL & PI <i class="material-icons">checklist</i></a>
+                                <a href="@(Url.Action("Index","Determination_0f_LL_PL_End_Resutl_View"))" class="btn btn-success btn-outline-rounded green">Cal LL & PI&nbsp;<i class="material-icons">aspect_ratio</i></a>
+                            </p>
+                            <p class="text-center">                               
+                                <a href="" class="btn btn-success btn-outline-rounded green">View Reports<i class="material-icons">report</i></a>
+                                <a href="" class="btn btn-success btn-outline-rounded green"><i class="material-icons"></i></a>   
+                                <a href="" class="btn btn-success btn-outline-rounded green"><i class="material-icons"></i></a>                               
+                            </p>
+                        </div>                        
+                    <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+       @*<div class="container-fluid"> <!--open container-->
+        <div class="row row-offcanvas row-offcanvas-left"><!--open row-->
+            <div id="nav-section" class="col-xs-12 column"><!--open nav column-->
+                <h1 id="dash-logo" class="center-block">NRCMD&#183;Dash</h1>
+                <div class="collapse navbar-collapse" id="sidebar-nav" role="navigation">
+                    <ul class="nav">
+                        <li id="ProductsAndOrders"><a href="@(Url.Action("Index","Summary_Report"))"><i class="material-icons md-18">list</i>Summary Report</a></li>
+                        <li id="RegionalSalesStatus"><a href="@(Url.Action("Index","Locations"))"><i class="material-icons md-18">add_location</i>Add Location</a></li>
+                        <li id="TeamEfficiency"><a href="@(Url.Action("Index","Determination_OF_LL_PL"))"><span class="material-icons">checklist</span>LL & PI</a></li>
+                        <li id="About"><a href="@(Url.Action("About", "Home"))"><span class="icon icon-info"></span>About</a></li>
+                    </ul>
+                    <div id="rights">
+                        <p>&copy; 2017 ERA All Rights Reserved.</p>
+                    </div>
+              </div>
+            </div><!--close left column-->
+        </div><!--close row-->
+    </div><!--close container-->*@        
 }
         else
         {

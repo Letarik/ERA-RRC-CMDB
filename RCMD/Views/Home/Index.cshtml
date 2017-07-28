@@ -1,31 +1,48 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<link href="@Url.Content("~/Content/bootstrap.min.modal.css")" rel="stylesheet" >
+<script src="@Url.Content("~/Scripts/jquery.min.modal.js")" ></script>
+<script src="@Url.Content("~/Scripts/bootstrap.min.modal.js")"></script>
+<link href="@Url.Content("~/Content/modal.min.css")" rel="stylesheet" >
 
-<div class="jumbotron">
-    <h1>ERARCMD</h1>
-    <br />
-    @*<p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>*@
-    <p><a href="#" class="btn btn-primary btn-lg">Read more &raquo;</a></p>
+<div id="main-section-header" class="row">
+    <h2 id="team-efficiency" class="col-xs-3">Ethiopian Road Research Center Road Constriction Material Database</h2>
+  
 </div>
+<div id="regional-sales" class="main-section-content row">
+    
+</div>
+<div class="container">
+   
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog"><!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="imgcontainer">
+                        <span class="close" title="Close Modal" data-dismiss="modal">&times;</span>
+                       
+                        <h4 class="modal-title" align="center">RCMDB</h4>                       
+                        <img src="@Url.Content("~/Content/img_avatar.png")" alt="login" class="avatar">
+                    </div>
+                    @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                 
+                </div>
+                <div class="modal-body">
+                    <p><button type="submit" onclick="location.href='@Url.Action("Login","Account")'">Login</button></p>
+                    @*<p><button type="submit">Register</button></p>*@
+                </div>
+                <div class="modal-footer">
+                  
+                        <button type="button" class="cancelbtn" data-dismiss="modal">Close</button>
+                        @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+                 
+            </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Material Location</h2>
-        <br />
-        
-        <p><a class="btn btn-default" href="#">Read more &raquo;</a></p>
+        </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>CBR & PI Test</h2>
-        <br />
+</div>
+<script>
+    $(document).ready(function () {
+        $("#myModal").modal('show');
       
-        <p><a class="btn btn-default" href="#">Read more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Moisture & Density Determination</h2>
-        <br />
-     
-        <p><a class="btn btn-default" href="#">Read more &raquo;</a></p>
-    </div>
-</div>
+    });
+</script>
