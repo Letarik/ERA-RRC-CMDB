@@ -4,84 +4,90 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div id="regional-sales" class="main-section-content row">
+    <div id="topProductsContainer">
+        <p>
+            <h4 align="right"><a href="@(Url.Action("Index", "Users"))" alt="Home"><i class="material-icons md-18">home</i></a>&nbsp;&nbsp;<a href="@(Url.Action("Index", "Determination_0f_LL_PL_End_Resutl_View"))" alt="List"><i class="material-icons md-18">list</i></a> &nbsp;&nbsp;<a href="@(Url.Action("Create", "Determination_0f_LL_PL_End_Resutl_View"))" alt="Create"><i class="material-icons md-18">create</i></a>&nbsp;&nbsp; <a href="@(Url.Action("Index","Home"))" align="right"><i class="material-icons md-18">power_settings_new</i></a></h4>
+        </p>
+        <br />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Test_Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Container)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Determination_Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Test_Method)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Wt_of_Container_Plus_Wet_Soil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Wt_of_Container_Plus_Dry_Soil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Wt_of_Container)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Wt_of_Water)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Wt_of_Dry_Soil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Moisture_Container)
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Test_Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Container)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Determination_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Test_Method)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Wt_of_Container_Plus_Wet_Soil)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Wt_of_Container_Plus_Dry_Soil)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Wt_of_Container)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Wt_of_Water)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Wt_of_Dry_Soil)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Moisture_Container)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Test_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Container)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Determination_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Test_Method)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Wt_of_Container_Plus_Wet_Soil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Wt_of_Container_Plus_Dry_Soil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Wt_of_Container)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Wt_of_Water)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Wt_of_Dry_Soil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Moisture_Container)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Test_Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Container)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Determination_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Test_Method)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wt_of_Container_Plus_Wet_Soil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wt_of_Container_Plus_Dry_Soil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wt_of_Container)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wt_of_Water)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wt_of_Dry_Soil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Moisture_Container)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+        </table>
 
-</table>
+    </div>
+    </div>
+       

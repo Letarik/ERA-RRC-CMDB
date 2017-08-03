@@ -4,96 +4,96 @@
     ViewBag.Title = "Index";
 }
 
-<p>
-    <h4>
-        @Html.ActionLink("Back to Menu", "Index", "Users")|Location| @Html.ActionLink("Create New Location", "Create")
-    </h4> 
-    <hr />
-</p>
-<table class="table table-striped table-bordered table-condensed">
-    <tbody>
-        <tr>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b>  @Html.DisplayNameFor(model => model.Material_Description)</b>
-                    </div>
-                </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                         <b>@Html.DisplayNameFor(model => model.District)</b>
-                    </div>
-                </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                    <b> @Html.DisplayNameFor(model => model.Road_Section)</b>
-                    </div>
-                </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b>@Html.DisplayNameFor(model => model.Quarry_Area)</b>
-                    </div>
-               </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b> @Html.DisplayNameFor(model => model.Change)</b>
-                    </div>
-               </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b> @Html.DisplayNameFor(model => model.Offset_Distance)</b>
-                    </div>
-                </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b> @Html.DisplayNameFor(model => model.Latitude)</b>
+<div id="regional-sales" class="main-section-content row">
+    <div id="topProductsContainer">
+        <p>
+            <h4 align="right"><a href="@(Url.Action("Index", "Users"))" alt="Home"><i class="material-icons md-18">home</i></a>&nbsp;&nbsp;<a href="@(Url.Action("Index", "Locations"))" alt="List"><i class="material-icons md-18">list</i></a> &nbsp;&nbsp;<a href="@(Url.Action("Create", "Locations"))" alt="Create"><i class="material-icons md-18">create</i></a>&nbsp;&nbsp; <a href="@(Url.Action("Index","Home"))" align="right"><i class="material-icons md-18">power_settings_new</i></a></h4>
+        </p>
+        <br />
+        <table class="table table-striped table-bordered table-condensed">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b>  @Html.DisplayNameFor(model => model.Material_Description)</b>
+                            </div>
                         </div>
-                    </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b>  @Html.DisplayNameFor(model => model.Longitude)</b>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b>@Html.DisplayNameFor(model => model.District)</b>
+                            </div>
                         </div>
-                    </div>
-            </td>
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b> @Html.DisplayNameFor(model => model.Elevation)</b>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b> @Html.DisplayNameFor(model => model.Road_Section)</b>
+                            </div>
                         </div>
-                    </div>
-            </td>
-            
-            <td align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b> @Html.DisplayNameFor(model => model.Photo)</b>
-                    </div>
-                </div>
-            </td>
-            <td colspan="3" align="center">
-                <div class="container-narrow">
-                    <div class="col-md-13">
-                        <b> Alternate Actions</b>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b>@Html.DisplayNameFor(model => model.Quarry_Area)</b>
+                            </div>
                         </div>
-                    </div>
-            </td>
-        </tr>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b> @Html.DisplayNameFor(model => model.Change)</b>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b> @Html.DisplayNameFor(model => model.Offset_Distance)</b>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b> @Html.DisplayNameFor(model => model.Latitude)</b>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b>  @Html.DisplayNameFor(model => model.Longitude)</b>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b> @Html.DisplayNameFor(model => model.Elevation)</b>
+                            </div>
+                        </div>
+                    </td>
 
-        @foreach (var item in Model)
+                    <td align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b> @Html.DisplayNameFor(model => model.Photo)</b>
+                            </div>
+                        </div>
+                    </td>
+                    <td colspan="3" align="center">
+                        <div class="container-narrow">
+                            <div class="col-md-13">
+                                <b> Alternate Actions</b>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                @foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -107,93 +107,95 @@
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.District)
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.Road_Section)
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.Quarry_Area)
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.Change)
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.Offset_Distance)
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.Latitude)
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.Longitude)
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             @Html.DisplayFor(modelItem => item.Elevation)
-                            </div>
                         </div>
+                    </div>
                 </td>
-               
+
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
-                            <img src="~/Uploads/@item.Photo" alt="Captured Photo" height="40px" width="40px"/>
+                            <img src="~/Uploads/@item.Photo" alt="Captured Photo" height="40px" width="40px" />
                             @*<img src="@Url.Content(item.Photo)" alt="Image" height="50" width="50" />*@
                             @*@Html.DisplayFor(modelItem => item.Photo)*@
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             <input type="submit" value="Edit" class="btn btn-warning col-lg-3 col-lg-offset-0" style="width:70px; height:35px;" onclick="location.href='@Url.Action("Edit",new {id = item.ID})'" />
                             @*@Html.ActionLink("Edit", "Edit", new { id = item.ID})*@
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             <input type="submit" value="Details" class="btn btn-success col-lg-3 col-lg-offset-0" style="width:70px; height:35px;" onclick="location.href='@Url.Action("../Summary_Report_View/Details",new { id=item.ID})'" />
                             @*@Html.ActionLink("Details", "Details", new { id = item.ID })*@
-                            </div>
                         </div>
+                    </div>
                 </td>
                 <td>
                     <div class="container-narrow">
                         <div class="col-md-13">
                             <input type="submit" value="Delete" class="btn btn-danger col-lg-3 col-lg-offset-0" style="width:70px; height:35px;" onclick="location.href='@Url.Action("Delete",new {id = item.ID})'" />
                             @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
-                            </div>
                         </div>
+                    </div>
                 </td>
             </tr>
         }
-    </tbody>   
-  </table>
+            </tbody>
+        </table>
+    </div>
+</div>

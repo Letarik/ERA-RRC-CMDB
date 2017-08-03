@@ -26,8 +26,8 @@
 @if (ViewBag.displayMenu == "4")
 {
    
-    <div id="main-section-header" class="row">
-        <h2 id="team-efficiency" class="col-xs-3">Ethiopian Road Research Center Constriction Material Database</h2>
+    <div id="main-section-header" class="row">        
+        <h2 id="team-efficiency" class="col-xs-3"> Ethiopian Road Research Center Constriction Material Database&nbsp;&nbsp;&nbsp;&nbsp;<a href="@(Url.Action("Index","Home"))" align="right"><i class="material-icons md-18">power_settings_new</i></a></h2>
     </div>
    
     <link href="@Url.Content("~/Content/TabStyleSheet.css")" rel="stylesheet">
@@ -38,38 +38,37 @@
                 <div class="board">                   
                         <div class="board-inner">
                         <ul class="nav nav-tabs" id="myTab">
-                            <div class="liner"></div>
+                            
                             <li class="active">
-                                <a href="@(Url.Action("Index","Locations"))" data-toggle="tab" title="Location Page">
+                                <a href="@(Url.Action("Index","Home"))" data-toggle="tab" title="Location Page">
                                     <span class="round-tabs one">
-                                        <i class="glyphicon glyphicon-home"></i>
+                                        <i class="material-icons md-18">home</i>
                                     </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="@(Url.Action("Index","Summary_Report"))" data-toggle="tab" title="Summary Report">
                                     <span class="round-tabs two">
-                                        <i class="glyphicon glyphicon-user"></i>
+                                        <i class="material-icons md-18">account_circle</i>
                                     </span>
                                 </a>  
                             </li>
                             <li>
                                 <a href="@(Url.Action("Index","Determination_OF_LL_PL"))" data-toggle="tab" title="LL & PL">
                                     <span class="round-tabs three">
-                                        <i class="glyphicon glyphicon-gift"></i>
+                                        <i class="material-icons md-18">settings</i>
                                     </span>
                                 </a>
                             </li>                         
                         </ul>
                     </div>   
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="home">
-                     
-                            
+                        <div class="tab-pane fade in active" id="home">                     
                                     <p class="text-center">
                                         <div class="btn-group mr-2" role="group" aria-label="Third group">
                                             <label class="btn pull-center">
-                                                <a href="@(Url.Action("Index","Home"))" class="btn btn-success btn-outline-rounded green">Log Out&nbsp;<i class="material-icons md-18">power_settings_new</i></a>
+                                                <a href="@(Url.Action("Index","Locations"))" class="btn btn-success btn-outline-rounded green">Add Locations<i class="material-icons md-18">add_location</i></a>                                            
+                                                @*<a href="@(Url.Action("Index","Home"))" class="btn btn-success btn-outline-rounded green">Log Out&nbsp;<i class="material-icons md-18">power_settings_new</i></a>*@
                                             </label>
                                             <label class="btn pull-center">
                                                 <a href="@(Url.Action("Index","Summary_Report"))" class="btn btn-success btn-outline-rounded green">Add Test Result <i class="material-icons md-18">list</i></a>
@@ -77,17 +76,17 @@
                                         </div>
                                     </p> 
                                     <p class="text-center">
-                                        <div class="btn-group mr-2" role="group" aria-label="Third group">
+                                       <div class="btn-group mr-2" role="group" aria-label="Third group">                                         
                                             <label class="btn pull-center">
-                                                <a href="@(Url.Action("Index","Summary_Report"))" class="btn btn-success btn-outline-rounded green">Add LL & PI <i class="material-icons">checklist</i></a>
-                                            </label>
-                                            <label class="btn pull-center">
-                                                <a href="@(Url.Action("Index","Determination_0f_LL_PL_End_Resutl_View"))" class="btn btn-success btn-outline-rounded green">Cal LL & PI&nbsp;<i class="material-icons">aspect_ratio</i></a>
-                                            </label>
+                                                <a href="@(Url.Action("Index","Determination_OF_LL_PL"))" class="btn btn-success btn-outline-rounded green">Add LL & PI <i class="material-icons">checklist</i></a>
+                                            </label>   
+                                           <label class="btn pull-center">
+                                               <a href="@(Url.Action("Index","Determination_0f_LL_PL_End_Resutl_View"))" class="btn btn-success btn-outline-rounded green">Cal LL & PI&nbsp;<i class="material-icons">aspect_ratio</i></a>
+                                           </label>                                        
                                         </div>
                                     </p> 
                                     <p class="text-center">
-                                        <div class="btn-group mr-2" role="group" aria-label="Third group">
+                                        <div class="btn-group mr-2" role="group" aria-label="Third group">                                           
                                             <label class="btn pull-center">
                                                 <a href="" class="btn btn-success btn-outline-rounded green">View Reports<i class="material-icons">report</i></a>
                                             </label>

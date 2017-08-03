@@ -3,19 +3,15 @@
 @{
     ViewBag.Title = "Edit";
 }
-
-
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>
-            @Html.ActionLink("Back to Menu", "Index", "Users")|Edit Summary Report | @Html.ActionLink("Summary Report List", "Index")
-            </h4>
-            <hr />
+<div id="regional-sales" class="main-section-content row">
+    <div id="topProductsContainer">
+        <p>
+            <h4 align="right"><a href="@(Url.Action("Index", "Users"))" alt="Home"><i class="material-icons md-18">home</i></a>&nbsp;&nbsp;<a href="@(Url.Action("Index", "Summary_Report"))" alt="List"><i class="material-icons md-18">list</i></a> &nbsp;&nbsp;<a href="@(Url.Action("Create", "Locations"))" alt="Create"><i class="material-icons md-18">create</i></a>&nbsp;&nbsp; <a href="@(Url.Action("Index","Home"))" align="right"><i class="material-icons md-18">power_settings_new</i></a></h4>
+        </p>
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()            
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.ID)
             <table class="table table-striped table-bordered table-condensed">
@@ -140,7 +136,7 @@
                                     @Html.ValidationMessageFor(model => model.SC, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </td>                        
+                        </td>
                         <td>
                             <div class="container-narrow">
                                 <div class="col-md-13">
@@ -163,8 +159,8 @@
                         </td>
                         <td colspan="4"></td>
                     </tr>
-                    <tr>
 
+                    <tr>
                         <td>
                             <div class="container-narrow">
                                 <div class="col-md-13">
@@ -206,6 +202,7 @@
                             </div>
                         </td>
                         <td></td>
+                    </tr>
                     <tr>
                         <td>
                             <div class="container-narrow">
@@ -247,8 +244,9 @@
                                 </div>
                             </div>
                         </td>
-                        <td></td>                     
-                    <tr>                      
+                        <td></td>
+                    </tr>
+                    <tr>
                         <td>
                             <div class="container-narrow">
                                 <div class="col-md-13">
@@ -292,7 +290,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                       
+
                         <td>
                             <div class="container-narrow">
                                 <div class="col-md-13">
@@ -302,12 +300,12 @@
                                     @Html.ValidationMessageFor(model => model.SEVT, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                    </td>
+                        </td>
                         <td>
                             <div class="container-narrow">
                                 <div class="col-md-13">
-                                @*@Html.LabelFor(model => model.Purpose_of_Material, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                            
+                                    @*@Html.LabelFor(model => model.Purpose_of_Material, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
                                     @Html.EditorFor(model => model.Purpose_of_Material, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Purpose_of_Material, "", new { @class = "text-danger" })
                                 </div>
@@ -316,14 +314,19 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                </tr>
+                    </tr>
                 </tbody>
-                </table>
-                    </div>
-                    }
+            </table>
+        }
 
-                   
+    </div>
+</div>
 
-                    @section Scripts {
-                        @Scripts.Render("~/bundles/jqueryval")
-                    }
+
+
+     
+
+
+        @*@section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@

@@ -4,161 +4,171 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm("Create", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+<div id="regional-sales" class="main-section-content row">
+    <div id="topProductsContainer">
 
-    <div class="form-horizontal">
-        <h4>@Html.ActionLink("Home", "Index", "Users")| Create Location | @Html.ActionLink("Location List", "Index")</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @using (Html.BeginForm("Create", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-        <table class="table table-striped table-bordered table-condensed">
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control", placeholder = "District", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
+            <div class="form-horizontal">
+                    @*<h4>@Html.ActionLink("Home", "Index", "Users")| Create Location | @Html.ActionLink("Location List", "Index")</h4>*@
+                <p>
+                    <h4 align="right"><a href="@(Url.Action("Index", "Users"))" alt="Home"><i class="material-icons md-18">home</i></a>&nbsp;&nbsp;<a href="@(Url.Action("Index", "Locations"))" alt="List"><i class="material-icons md-18">list</i></a> &nbsp;&nbsp;<a href="@(Url.Action("Create", "Locations"))" alt="Create"><i class="material-icons md-18">create</i></a>&nbsp;&nbsp; <a href="@(Url.Action("Index","Home"))" align="right"><i class="material-icons md-18">power_settings_new</i></a></h4>
+                </p>
+                <br />
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Road_Section, new { htmlAttributes = new { @class = "form-control", placeholder = "Road Section", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Road_Section, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
+                <table class="table table-striped table-bordered table-condensed">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control", placeholder = "District", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
 
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Quarry_Area, new { htmlAttributes = new { @class = "form-control", placeholder = "Quarry Area", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Quarry_Area, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Road_Section, new { htmlAttributes = new { @class = "form-control", placeholder = "Road Section", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Road_Section, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
 
-                    </td>
-                    <td>
-                        <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Quarry_Area, new { htmlAttributes = new { @class = "form-control", placeholder = "Quarry Area", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Quarry_Area, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
 
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Change, new { htmlAttributes = new { @class = "form-control", placeholder = "Chainage", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Change, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                                <input type="submit" value="Create" class="btn btn-small btn-primary" style="width:150px; height:35px;" />
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="container-narrow">
+                            </td>
+                            <td>
+                                <div class="container-narrow">
 
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Offset_Distance, new { htmlAttributes = new { @class = "form-control", placeholder = "Offset Distance", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Offset_Distance, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", placeholder = "Latitude", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", placeholder = "Longitude", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Elevation, new { htmlAttributes = new { @class = "form-control", placeholder = "Elevation", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Elevation, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                                <input type="reset" class="btn btn-info" value="Clear" style="width:150px; height:35px;" />
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Change, new { htmlAttributes = new { @class = "form-control", placeholder = "Chainage", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Change, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        <input type="submit" value="Create" class="btn btn-small btn-primary" style="width:150px; height:35px;" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="container-narrow">
 
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Material_Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Material Description", @TextMode = "multiline", style = "Height:60px", tabindex = 1 } })
-                                @*@Html.TextArea("Material_Description")*@
-                                @*<textarea class="form-control" name="Material_Description" placeholder="Material Description" Value=" " cols="30">Model.Material_Description</textarea>*@
-                                @*@Html.TextAreaFor(model => model.Material_Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Material Description"} })*@
-                                @*HTML(model => model.Material_Description, new { htmlAttributes = new { @class = "form-control", placeholder = "Material Description", tabindex = 1 } })*@
-                                @*@Html.ValidationMessageFor(model => model.Material_Description, "", new { @class = "text-danger" })*@
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Offset_Distance, new { htmlAttributes = new { @class = "form-control", placeholder = "Offset Distance", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Offset_Distance, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", placeholder = "Latitude", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control", placeholder = "Longitude", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Elevation, new { htmlAttributes = new { @class = "form-control", placeholder = "Elevation", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Elevation, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        <input type="reset" class="btn btn-info" value="Clear" style="width:150px; height:35px;" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="container-narrow">
 
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "form-control", placeholder = "Test Purpose", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                              
-                                        <input class="form-control" type="file" name="postedFile" placeholder="Upload Photo"/>
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Material_Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Material Description", @TextMode = "multiline", style = "Height:60px", tabindex = 1 } })
+                                        @*@Html.TextArea("Material_Description")*@
+                                        @*<textarea class="form-control" name="Material_Description" placeholder="Material Description" Value=" " cols="30">Model.Material_Description</textarea>*@
+                                        @*@Html.TextAreaFor(model => model.Material_Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Material Description"} })*@
+                                        @*HTML(model => model.Material_Description, new { htmlAttributes = new { @class = "form-control", placeholder = "Material Description", tabindex = 1 } })*@
+                                        @*@Html.ValidationMessageFor(model => model.Material_Description, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "form-control", placeholder = "Test Purpose", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+
+                                        <input class="form-control" type="file" name="postedFile" placeholder="Upload Photo" />
                                         @*@Html.EditorFor(model => model.Photo, new { htmlAttributes = new { type = "file", name = "file" } })*@
                                         @*@Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })*@
-                            
-                            </div>
-                        </div>                      
-                    </td>
-                    <td>
-                        <div class="container-narrow">
 
-                            <div class="col-md-13">
-                                @Html.EditorFor(model => model.Test_Result, new { htmlAttributes = new { @class = "form-control", placeholder = "Test Result", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Test_Result, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="container-narrow">
-                            <div class="col-md-13">
-                                @*@Html.EditorFor(model => model.Material_Description_ID, new { htmlAttributes = new { @class = "form-control", placeholder = "Test Result", tabindex = 1 } })
-                                @Html.ValidationMessageFor(model => model.Material_Description_ID, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                                    <div class="col-md-13">
+                                        @Html.EditorFor(model => model.Test_Result, new { htmlAttributes = new { @class = "form-control", placeholder = "Test Result", tabindex = 1 } })
+                                        @Html.ValidationMessageFor(model => model.Test_Result, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-narrow">
+                                    <div class="col-md-13">
+                                        @*@Html.EditorFor(model => model.Material_Description_ID, new { htmlAttributes = new { @class = "form-control", placeholder = "Test Result", tabindex = 1 } })
+                                            @Html.ValidationMessageFor(model => model.Material_Description_ID, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        @*@section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }*@
+
+</div>
+</div>
