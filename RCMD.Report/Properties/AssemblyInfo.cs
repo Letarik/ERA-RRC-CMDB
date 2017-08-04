@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RCMD.Reports")]
+[assembly: AssemblyTitle("RCMD.Report")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RCMD.Reports")]
+[assembly: AssemblyProduct("RCMD.Report")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2a62343e-81f2-4bd3-b8d7-36ee6198147c")]
+[assembly: Guid("2aa336f3-6652-4340-800f-f627719a7450")]
 
 // Version information for an assembly consists of the following four values:
 //

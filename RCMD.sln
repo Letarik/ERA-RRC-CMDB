@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCMD", "RCMD\RCMD.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCMD.Tests", "RCMD.Tests\RCMD.Tests.csproj", "{489FDA44-9844-4821-B18C-679AACAF3C7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCMD.Report", "RCMD.Report\RCMD.Report.csproj", "{2AA336F3-6652-4340-800F-F627719A7450}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{489FDA44-9844-4821-B18C-679AACAF3C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{489FDA44-9844-4821-B18C-679AACAF3C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{489FDA44-9844-4821-B18C-679AACAF3C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA336F3-6652-4340-800F-F627719A7450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA336F3-6652-4340-800F-F627719A7450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA336F3-6652-4340-800F-F627719A7450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA336F3-6652-4340-800F-F627719A7450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
