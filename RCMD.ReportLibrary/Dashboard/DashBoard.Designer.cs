@@ -20,7 +20,12 @@ namespace Telerik.Reporting.Examples.CSharp
             Telerik.Reporting.TableGroup tableGroup3 = new Telerik.Reporting.TableGroup();
             Telerik.Reporting.TableGroup tableGroup4 = new Telerik.Reporting.TableGroup();
             Telerik.Reporting.TableGroup tableGroup5 = new Telerik.Reporting.TableGroup();
-            Telerik.Reporting.GraphTitle graphTitle1 = new Telerik.Reporting.GraphTitle();
+            Telerik.Reporting.GeoLocationMapGroup geoLocationMapGroup1 = new Telerik.Reporting.GeoLocationMapGroup();
+            Telerik.Reporting.MapLegend mapLegend1 = new Telerik.Reporting.MapLegend();
+            Telerik.Reporting.MercatorProjection mercatorProjection1 = new Telerik.Reporting.MercatorProjection();
+            Telerik.Reporting.GenericTileProvider genericTileProvider1 = new Telerik.Reporting.GenericTileProvider();
+            Telerik.Reporting.MapTitle mapTitle1 = new Telerik.Reporting.MapTitle();
+            Telerik.Reporting.MapGroup mapGroup1 = new Telerik.Reporting.MapGroup();
             Telerik.Reporting.Drawing.StyleRule styleRule1 = new Telerik.Reporting.Drawing.StyleRule();
             Telerik.Reporting.Drawing.StyleRule styleRule2 = new Telerik.Reporting.Drawing.StyleRule();
             Telerik.Reporting.Drawing.StyleRule styleRule3 = new Telerik.Reporting.Drawing.StyleRule();
@@ -54,8 +59,8 @@ namespace Telerik.Reporting.Examples.CSharp
             this.textBox1 = new Telerik.Reporting.TextBox();
             this.shape5 = new Telerik.Reporting.Shape();
             this.textBox6 = new Telerik.Reporting.TextBox();
-            this.LineChart = new Telerik.Reporting.Graph();
-            this.lineSeries1 = new Telerik.Reporting.LineSeries();
+            this.quarrymap = new Telerik.Reporting.Map();
+            this.pointMapSeries1 = new Telerik.Reporting.PointMapSeries();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // textBox4
@@ -95,10 +100,9 @@ namespace Telerik.Reporting.Examples.CSharp
             // 
             // detail
             // 
-            this.detail.Height = Telerik.Reporting.Drawing.Unit.Inch(4.399960994720459D);
+            this.detail.Height = Telerik.Reporting.Drawing.Unit.Inch(14.599961280822754D);
             this.detail.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.panel2,
-            this.textBox7});
+            this.panel2});
             this.detail.Name = "detail";
             this.detail.Style.LineWidth = Telerik.Reporting.Drawing.Unit.Point(5D);
             // 
@@ -109,25 +113,26 @@ namespace Telerik.Reporting.Examples.CSharp
             this.textBox11,
             this.textBox12,
             this.textBox3,
-            this.LineChart});
-            this.panel2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(7.8837074397597462E-05D));
+            this.textBox2,
+            this.quarrymap,
+            this.textBox7});
+            this.panel2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0053583779372274876D), Telerik.Reporting.Drawing.Unit.Inch(7.8678131103515625E-05D));
             this.panel2.Name = "panel2";
-            this.panel2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(10.90000057220459D), Telerik.Reporting.Drawing.Unit.Inch(4.3998818397521973D));
+            this.panel2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(22.594642639160156D), Telerik.Reporting.Drawing.Unit.Inch(14.599883079528809D));
             // 
             // panel3
             // 
             this.panel3.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.textBox2,
             this.table1});
-            this.panel3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(0.47999998927116394D));
+            this.panel3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0098425550386309624D), Telerik.Reporting.Drawing.Unit.Inch(0.68015772104263306D));
             this.panel3.Name = "panel3";
-            this.panel3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(4.6000003814697266D), Telerik.Reporting.Drawing.Unit.Inch(2.0199999809265137D));
+            this.panel3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.1901576519012451D), Telerik.Reporting.Drawing.Unit.Inch(2.0197243690490723D));
             // 
             // textBox2
             // 
-            this.textBox2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0053583779372274876D), Telerik.Reporting.Drawing.Unit.Inch(0.360078901052475D));
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.5999999046325684D), Telerik.Reporting.Drawing.Unit.Inch(0.31999999284744263D));
+            this.textBox2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.1946418285369873D), Telerik.Reporting.Drawing.Unit.Inch(0.31999999284744263D));
             this.textBox2.StyleName = "legend";
             this.textBox2.Value = "SALES AMOUNT IN USD (THOUSANDS)";
             // 
@@ -164,7 +169,7 @@ namespace Telerik.Reporting.Examples.CSharp
             this.textBox8,
             this.textBox9,
             this.textBox10});
-            this.table1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(5.0799989700317383D), Telerik.Reporting.Drawing.Unit.Mm(13.204999923706055D));
+            this.table1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(0.00099921226501464844D), Telerik.Reporting.Drawing.Unit.Mm(0.0010012307902798057D));
             this.table1.Name = "table1";
             tableGroup5.Groupings.Add(new Telerik.Reporting.Grouping(null));
             tableGroup5.Name = "detail";
@@ -202,17 +207,18 @@ namespace Telerik.Reporting.Examples.CSharp
             // 
             // textBox11
             // 
-            this.textBox11.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.5999999046325684D), Telerik.Reporting.Drawing.Unit.Inch(0.47999998927116394D));
+            this.textBox11.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.2000789642333984D), Telerik.Reporting.Drawing.Unit.Inch(0.360078901052475D));
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.0799999237060547D), Telerik.Reporting.Drawing.Unit.Inch(0.31999999284744263D));
+            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(18.394563674926758D), Telerik.Reporting.Drawing.Unit.Inch(0.3198029100894928D));
             this.textBox11.StyleName = "legend";
+            this.textBox11.TocText = "Quarry Area Map";
             this.textBox11.Value = "YEARLY SALES DISTRIBUTION";
             // 
             // textBox12
             // 
-            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(6.679999828338623D), Telerik.Reporting.Drawing.Unit.Inch(0.47999998927116394D));
+            this.textBox12.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(2.6999607086181641D));
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.7100000381469727D), Telerik.Reporting.Drawing.Unit.Inch(0.31999999284744263D));
+            this.textBox12.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(3.2000000476837158D), Telerik.Reporting.Drawing.Unit.Inch(0.31999999284744263D));
             this.textBox12.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox12.StyleName = "legend";
             this.textBox12.Value = "QUARTERLY SALES DISTRIBUTION";
@@ -222,7 +228,7 @@ namespace Telerik.Reporting.Examples.CSharp
             this.textBox3.Anchoring = ((Telerik.Reporting.AnchoringStyles)((Telerik.Reporting.AnchoringStyles.Left | Telerik.Reporting.AnchoringStyles.Right)));
             this.textBox3.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(0D));
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(10.90000057220459D), Telerik.Reporting.Drawing.Unit.Inch(0.36000001430511475D));
+            this.textBox3.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(22.594642639160156D), Telerik.Reporting.Drawing.Unit.Inch(0.36000001430511475D));
             this.textBox3.Style.BorderColor.Bottom = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(137)))), ((int)(((byte)(104)))));
             this.textBox3.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.textBox3.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(57)))), ((int)(((byte)(27)))));
@@ -232,7 +238,7 @@ namespace Telerik.Reporting.Examples.CSharp
             // 
             // textBox7
             // 
-            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0099614458158612251D), Telerik.Reporting.Drawing.Unit.Inch(2.5001575946807861D));
+            this.textBox7.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0D), Telerik.Reporting.Drawing.Unit.Inch(13.899962425231934D));
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(10.399999618530273D), Telerik.Reporting.Drawing.Unit.Inch(0.36000001430511475D));
             this.textBox7.Style.BorderColor.Bottom = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(137)))), ((int)(((byte)(104)))));
@@ -264,7 +270,7 @@ namespace Telerik.Reporting.Examples.CSharp
             this.textBox6});
             this.panel5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0026791889686137438D), Telerik.Reporting.Drawing.Unit.Mm(0.0010012307902798057D));
             this.panel5.Name = "panel5";
-            this.panel5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(10.897282600402832D), Telerik.Reporting.Drawing.Unit.Mm(17.780000686645508D));
+            this.panel5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(22.597282409667969D), Telerik.Reporting.Drawing.Unit.Mm(17.780000686645508D));
             // 
             // textBox1
             // 
@@ -281,7 +287,7 @@ namespace Telerik.Reporting.Examples.CSharp
             this.shape5.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.0026791889686137438D), Telerik.Reporting.Drawing.Unit.Inch(0.60003942251205444D));
             this.shape5.Name = "shape5";
             this.shape5.ShapeType = new Telerik.Reporting.Drawing.Shapes.LineShape(Telerik.Reporting.Drawing.Shapes.LineDirection.EW);
-            this.shape5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(10.890000343322754D), Telerik.Reporting.Drawing.Unit.Point(3.75D));
+            this.shape5.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(22.590000152587891D), Telerik.Reporting.Drawing.Unit.Point(3.75D));
             this.shape5.Stretch = true;
             this.shape5.Style.BorderStyle.Bottom = Telerik.Reporting.Drawing.BorderType.Solid;
             this.shape5.Style.BorderStyle.Top = Telerik.Reporting.Drawing.BorderType.Solid;
@@ -291,7 +297,7 @@ namespace Telerik.Reporting.Examples.CSharp
             // textBox6
             // 
             this.textBox6.Anchoring = Telerik.Reporting.AnchoringStyles.Right;
-            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(8.7473220825195312D), Telerik.Reporting.Drawing.Unit.Inch(0.22485215961933136D));
+            this.textBox6.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(20.447322845458984D), Telerik.Reporting.Drawing.Unit.Inch(0.22485215961933136D));
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.1199996471405029D), Telerik.Reporting.Drawing.Unit.Inch(0.22011041641235352D));
             this.textBox6.Style.Color = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(47)))), ((int)(((byte)(11)))));
@@ -299,29 +305,69 @@ namespace Telerik.Reporting.Examples.CSharp
             this.textBox6.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox6.Value = "[INTERNAL PURPOSES ONLY]";
             // 
-            // LineChart
+            // quarrymap
             // 
-            this.LineChart.Legend.Style.LineColor = System.Drawing.Color.LightGray;
-            this.LineChart.Legend.Style.LineWidth = Telerik.Reporting.Drawing.Unit.Inch(0D);
-            this.LineChart.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(116.84201049804688D), Telerik.Reporting.Drawing.Unit.Mm(12.191998481750488D));
-            this.LineChart.Name = "LineChart";
-            this.LineChart.PlotAreaStyle.LineColor = System.Drawing.Color.LightGray;
-            this.LineChart.PlotAreaStyle.LineWidth = Telerik.Reporting.Drawing.Unit.Inch(0D);
-            this.LineChart.Series.Add(this.lineSeries1);
-            this.LineChart.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Mm(147.06396484375D), Telerik.Reporting.Drawing.Unit.Mm(51.308002471923828D));
-            graphTitle1.Style.LineColor = System.Drawing.Color.LightGray;
-            graphTitle1.Style.LineWidth = Telerik.Reporting.Drawing.Unit.Inch(0D);
-            this.LineChart.Titles.Add(graphTitle1);
+            this.quarrymap.ColorPalette = null;
+            this.quarrymap.DataSource = this.TestResultSummeryReport;
+            geoLocationMapGroup1.Groupings.Add(new Telerik.Reporting.Grouping("= Fields.Quarry_Area"));
+            geoLocationMapGroup1.Name = "quarry_AreaGroup";
+            geoLocationMapGroup1.Sortings.Add(new Telerik.Reporting.Sorting("= Fields.Quarry_Area", Telerik.Reporting.SortDirection.Asc));
+            this.quarrymap.GeoLocationGroups.Add(geoLocationMapGroup1);
+            mapLegend1.Style.LineColor = System.Drawing.Color.LightGray;
+            mapLegend1.Style.LineWidth = Telerik.Reporting.Drawing.Unit.Inch(0D);
+            this.quarrymap.Legends.Add(mapLegend1);
+            this.quarrymap.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Mm(83.819999694824219D), Telerik.Reporting.Drawing.Unit.Mm(17.277008056640625D));
+            this.quarrymap.Meridians.Style.LineColor = System.Drawing.Color.LightGray;
+            this.quarrymap.Name = "quarrymap";
+            this.quarrymap.Parallels.Style.LineColor = System.Drawing.Color.LightGray;
+            this.quarrymap.PlotAreaStyle.LineColor = System.Drawing.Color.LightGray;
+            this.quarrymap.PlotAreaStyle.LineWidth = Telerik.Reporting.Drawing.Unit.Inch(0D);
+            this.quarrymap.Projection = mercatorProjection1;
+            this.quarrymap.ScaleLegend.ItemStyle.BorderColor.Default = System.Drawing.Color.White;
+            this.quarrymap.ScaleLegend.ItemStyle.LineColor = System.Drawing.Color.DodgerBlue;
+            this.quarrymap.ScaleLegend.ItemStyle.LineWidth = Telerik.Reporting.Drawing.Unit.Pixel(2D);
+            this.quarrymap.ScaleLegend.ItemStyle.Padding.Left = Telerik.Reporting.Drawing.Unit.Pixel(5D);
+            this.quarrymap.ScaleLegend.ItemStyle.Padding.Right = Telerik.Reporting.Drawing.Unit.Pixel(5D);
+            this.quarrymap.ScaleLegend.ItemStyle.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
+            this.quarrymap.ScaleLegend.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Bottom;
+            this.quarrymap.Series.Add(this.pointMapSeries1);
+            this.quarrymap.SeriesGroups.Add(mapGroup1);
+            this.quarrymap.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Mm(490.08389282226562D), Telerik.Reporting.Drawing.Unit.Mm(335.780029296875D));
+            this.quarrymap.Style.Padding.Bottom = Telerik.Reporting.Drawing.Unit.Pixel(10D);
+            this.quarrymap.Style.Padding.Left = Telerik.Reporting.Drawing.Unit.Pixel(10D);
+            this.quarrymap.Style.Padding.Right = Telerik.Reporting.Drawing.Unit.Pixel(10D);
+            this.quarrymap.Style.Padding.Top = Telerik.Reporting.Drawing.Unit.Pixel(10D);
+            genericTileProvider1.Attribution = "© OpenStreetMap contributors";
+            genericTileProvider1.LogoUrl = "http://wiki.openstreetmap.org/w/images/thumb/7/79/Public-images-osm_logo.svg/32px" +
+    "-Public-images-osm_logo.svg.png";
+            genericTileProvider1.UrlSubdomains.Add("a");
+            genericTileProvider1.UrlSubdomains.Add("b");
+            genericTileProvider1.UrlSubdomains.Add("c");
+            genericTileProvider1.UrlTemplate = "http://{subdomain}.tile.openstreetmap.org/{zoom}/{X}/{Y}.png";
+            this.quarrymap.TileProvider = genericTileProvider1;
+            mapTitle1.Style.LineColor = System.Drawing.Color.LightGray;
+            mapTitle1.Style.LineWidth = Telerik.Reporting.Drawing.Unit.Inch(0D);
+            mapTitle1.Text = "Quarry Area";
+            this.quarrymap.Titles.Add(mapTitle1);
             // 
-            // lineSeries1
+            // pointMapSeries1
             // 
-            this.lineSeries1.CoordinateSystem = null;
-            this.lineSeries1.DataPointStyle.Visible = false;
-            this.lineSeries1.LineStyle.LineWidth = Telerik.Reporting.Drawing.Unit.Pixel(1D);
-            this.lineSeries1.MarkerMaxSize = Telerik.Reporting.Drawing.Unit.Pixel(50D);
-            this.lineSeries1.MarkerMinSize = Telerik.Reporting.Drawing.Unit.Pixel(5D);
-            this.lineSeries1.MarkerSize = Telerik.Reporting.Drawing.Unit.Pixel(5D);
-            this.lineSeries1.Size = null;
+            this.pointMapSeries1.DataPointLabel = "= Avg(Fields.Location_ID)";
+            this.pointMapSeries1.DataPointLabelStyle.Visible = false;
+            this.pointMapSeries1.DataPointStyle.Visible = true;
+            this.pointMapSeries1.GeoLocationGroup = geoLocationMapGroup1;
+            this.pointMapSeries1.Latitude = "= (Fields.Latitude)";
+            this.pointMapSeries1.LegendItem.Value = "Series 1";
+            this.pointMapSeries1.Longitude = "= (Fields.Longtiude)";
+            this.pointMapSeries1.MarkerMaxSize = Telerik.Reporting.Drawing.Unit.Mm(20D);
+            this.pointMapSeries1.MarkerMinSize = Telerik.Reporting.Drawing.Unit.Mm(10D);
+            this.pointMapSeries1.MarkerType = Telerik.Reporting.DataPointMarkerType.Circle;
+            this.pointMapSeries1.Name = "pointMapSeries1";
+            mapGroup1.Name = "seriesGroup";
+            this.pointMapSeries1.SeriesGroup = mapGroup1;
+            this.pointMapSeries1.Size = "= Avg(Fields.Location_ID)";
+            this.pointMapSeries1.ToolTip.Text = "= Avg(Fields.Location_ID)";
+            this.pointMapSeries1.ToolTip.Title = "Lattitude";
             // 
             // Dashboard
             // 
@@ -393,7 +439,7 @@ namespace Telerik.Reporting.Examples.CSharp
             styleRule7});
             this.TocText = "Dashboard";
             this.UnitOfMeasure = Telerik.Reporting.Drawing.UnitType.Mm;
-            this.Width = Telerik.Reporting.Drawing.Unit.Inch(10.90000057220459D);
+            this.Width = Telerik.Reporting.Drawing.Unit.Inch(22.600000381469727D);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -423,7 +469,7 @@ namespace Telerik.Reporting.Examples.CSharp
         private Reporting.TextBox textBox8;
         private Reporting.TextBox textBox9;
         private Reporting.TextBox textBox10;
-        private Graph LineChart;
-        private LineSeries lineSeries1;
+        private Map quarrymap;
+        private PointMapSeries pointMapSeries1;
     }
 }
