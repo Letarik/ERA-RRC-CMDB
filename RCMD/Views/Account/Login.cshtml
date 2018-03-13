@@ -26,8 +26,8 @@
                                     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id="login" }))
                                         {
                                             @Html.AntiForgeryToken()
-                                            <h4 align="center">Use a local account to log in.</h4>
-                                            <hr />
+                                            <h4 align="center" style="margin-left:150px">Use Local Account</h4>
+                                            <hr style="margin-right:0px; margin-left:0px"/>
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                             <div class="form-group">
                                                 @*@Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })*@
