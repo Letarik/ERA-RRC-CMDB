@@ -1,6 +1,6 @@
 ﻿/*
-* TelerikReporting v11.1.17.614 (http://www.telerik.com/products/reporting.aspx)
-* Copyright 2017 Telerik AD. All rights reserved.
+* TelerikReporting v12.0.18.227 (http://www.telerik.com/products/reporting.aspx)
+* Copyright 2018 Telerik AD. All rights reserved.
 *
 * Telerik Reporting commercial licenses may be obtained at
 * http://www.telerik.com/purchase/license-agreement/reporting.aspx
@@ -326,7 +326,20 @@
         errorCreatingReportDocument: "Error creating report document (Report = {0}; Format = {1}).",
         unableToGetReportParameters: "Unable to get report parameters.",
         errorObtainingAuthenticationToken: "Error obtaining authentication token.",
-        clientExpired: "Click 'Refresh' to restore client session."
+        clientExpired: "Click 'Refresh' to restore client session.",
+        ariaLabelPageNumberSelector: "Page number selector. Showing page {0} of {1}.",
+        ariaLabelPageNumberEditor: "Page number editor.",
+        ariaLabelExpandable: "Expandable",
+        ariaLabelParameter: "parameter",
+        ariaLabelErrorMessage: "Error message",
+        ariaLabelParameterInfo: "Contains {0} options.",
+        ariaLabelMultiSelect: "Multiselect",
+        ariaLabelMultiValue: "Multivalue",
+        ariaLabelSingleValue: "Single value",
+        ariaLabelParameterDateTime: "Datetime",
+        ariaLabelParameterString: "String",
+        ariaLabelParameterNumerical: "Numerical",
+        ariaLabelParameterBoolean: "Boolean"
     };
     trv.sr = trv.utils.extend(sr, trv.sr);
 })(window.telerikReportViewer = window.telerikReportViewer || {});
@@ -398,6 +411,24 @@
             }
         };
     }
+    function SafariHelper() {
+        function hasPdfPlugin() {
+            var navPlugins = navigator.plugins;
+            var found = false;
+            utils.each(navPlugins, function(key, value) {
+                if (navPlugins[key].name === "WebKit built-in PDF" || navPlugins[key].name === "Adobe Acrobat") {
+                    found = true;
+                    return false;
+                }
+            });
+            return found;
+        }
+        return {
+            hasPdfPlugin: function() {
+                return hasPdfPlugin();
+            }
+        };
+    }
     function OtherBrowserHelper() {
         return {
             hasPdfPlugin: function() {
@@ -408,7 +439,7 @@
     function selectBrowserHelper() {
         if (window.navigator) {
             var userAgent = window.navigator.userAgent.toLowerCase();
-            if (userAgent.indexOf("msie") > -1 || userAgent.indexOf("mozilla") > -1 && userAgent.indexOf("trident") > -1) return IEHelper(); else if (userAgent.indexOf("firefox") > -1) return FirefoxHelper(); else if (userAgent.indexOf("chrome") > -1) return ChromeHelper(); else return OtherBrowserHelper();
+            if (userAgent.indexOf("msie") > -1 || userAgent.indexOf("mozilla") > -1 && userAgent.indexOf("trident") > -1) return IEHelper(); else if (userAgent.indexOf("firefox") > -1) return FirefoxHelper(); else if (userAgent.indexOf("chrome") > -1) return ChromeHelper(); else if (userAgent.indexOf("safari") > -1) return SafariHelper(); else return OtherBrowserHelper();
         }
         return null;
     }
@@ -901,18 +932,17 @@
                 if (!loadPromise) {
                     onBeforeLoadReport();
                     var format = getFormat();
-                    var deviceInfo = createDeviceInfo();
+                    var deviceInfo = createPreviewDeviceInfo();
                     loadPromise = initializeClientAsync().then(registerInstanceAsync).then(function() {
                         return registerDocumentAsync(format, deviceInfo, useCache, baseDocumentId, actionId);
                     }).then(onReportDocumentRegistered);
                 }
                 return loadPromise;
             }
-            function createDeviceInfo() {
-                var deviceInfo = {
-                    ContentOnly: true,
-                    UseSVG: utils.isSvgSupported()
-                };
+            function createPreviewDeviceInfo() {
+                var deviceInfo = createDeviceInfo();
+                deviceInfo.ContentOnly = true;
+                deviceInfo.UseSVG = utils.isSvgSupported();
                 return deviceInfo;
             }
             return {
@@ -935,6 +965,16 @@
                     reportHost = null;
                 }
             };
+        }
+        function createDeviceInfo() {
+            var enableAcc = options.settings.enableAccessibility();
+            var deviceInfo = {
+                enableAccessibility: enableAcc
+            };
+            if (enableAcc) {
+                deviceInfo.contentTabIndex = options.settings.contentTabIndex;
+            }
+            return deviceInfo;
         }
         function resolveErrorByExceptionType(exceptionType) {
             switch (exceptionType) {
@@ -1039,6 +1079,9 @@
         function exportReport(format, deviceInfo) {
             throwIfNoReport();
             onExportStarted();
+            if (!deviceInfo) {
+                deviceInfo = createDeviceInfo();
+            }
             var queryString = "response-content-disposition=attachment";
             exportAsync(format, deviceInfo).then(function(info) {
                 var url = client.formatDocumentUrl(info.clientId, info.instanceId, info.documentId, queryString);
@@ -1673,8 +1716,8 @@
         FIT_PAGE: "FIT_PAGE",
         SPECIFIC: "SPECIFIC"
     };
-    function PagesArea(placeholder, options) {
-        options = $.extend({}, defaultOptions, options);
+    function PagesArea(placeholder, options, otherOptions) {
+        options = $.extend({}, defaultOptions, options, otherOptions);
         var controller = options.controller;
         if (!controller) throw "No controller (telerikReportViewer.reportViewerController) has been specified.";
         var $placeholder = $(placeholder), $pageContainer = $placeholder.find(".trv-page-container"), pageContainer = $pageContainer[0], $pageWrapper = $placeholder.find(".trv-page-wrapper"), pageWrapper = $pageWrapper[0], $errorMessage = $placeholder.find(".trv-error-message"), actions, pendingBookmark, pageScaleMode = scaleModes.SPECIFIC, pageScale = 1, minPageScale = .1, maxPageScale = 8, documentReady = true, navigateToPageOnDocReady, navigateToBookmarkOnDocReady, isNewReportSource, showErrorTimeoutId;
@@ -1876,8 +1919,14 @@
             if (bookmark) {
                 var el = $pageContainer.find("[data-bookmark-id=" + bookmark + "]")[0];
                 if (el) {
+                    if (options.enableAccessibility) {
+                        var $nextFocusable = findNextFocusableElement($(el));
+                        if ($nextFocusable) {
+                            $nextFocusable.focus();
+                        }
+                    }
                     var container = $pageContainer[0], offsetTop = 0, offsetLeft = 0;
-                    while (el != container) {
+                    while (el && el != container) {
                         if ($(el).is(".trv-page-wrapper")) {
                             var scale = $(el).data("pageScale");
                             if (typeof scale === "number") {
@@ -1893,6 +1942,16 @@
                     container.scrollLeft = offsetLeft;
                 }
             }
+        }
+        function findNextFocusableElement(element) {
+            if (!element || element.length == 0) {
+                return null;
+            }
+            var num = utils.tryParseInt(element.attr("tabindex"));
+            if (num != NaN && num > -1) {
+                return element;
+            }
+            return findNextFocusableElement(element.next());
         }
         function disablePagesArea(disable) {
             (disable ? $.fn.addClass : $.fn.removeClass).call($placeholder, "loading");
@@ -2101,10 +2160,10 @@
         }
     }
     var pluginName = "telerik_ReportViewer_PagesArea";
-    $.fn[pluginName] = function(options) {
+    $.fn[pluginName] = function(options, otherOptions) {
         return utils.each(this, function() {
             if (!$.data(this, pluginName)) {
-                $.data(this, pluginName, new PagesArea(this, options));
+                $.data(this, pluginName, new PagesArea(this, options, otherOptions));
             }
         });
     };
@@ -2125,15 +2184,30 @@
         }
         var $placeholder = $(placeholder), $documentMap;
         var documentMapVisible = options.documentMapVisible !== false;
+        var enableAccessibility = options.enableAccessibility;
         init();
         function init() {
-            $documentMap = $("<div></div>");
+            $documentMap = $('<div id="documentMap"></div>');
             $documentMap.appendTo(placeholder);
             attach();
         }
         function onTreeViewSelectionChanged(e) {
             var documentMapNode = this.dataItem(e.node), page = documentMapNode.page, id = documentMapNode.id;
             controller.navigateToPage(page, id);
+        }
+        function onTreeViewNodeExpand(e) {
+            if (enableAccessibility) {
+                window.setTimeout(function() {
+                    setNodeAccessibilityAttributes(e.node);
+                }, 100);
+            }
+        }
+        function setNodeAccessibilityAttributes(node) {
+            var $items = $(node).find("li");
+            utils.each($items, function() {
+                var $li = $(this);
+                $li.attr("aria-label", $li[0].innerText);
+            });
         }
         function clearDocumentMap() {
             displayDocumentMap([]);
@@ -2149,7 +2223,18 @@
                 $treeView = $documentMap.data("kendoTreeView");
             }
             $treeView.setDataSource(documentMap);
+            setAccessibilityAttributes($treeView);
             showDocumentMap(hasDocumentMap);
+        }
+        function setAccessibilityAttributes(treeView) {
+            if (enableAccessibility) {
+                treeView.bind("expand", onTreeViewNodeExpand);
+                treeView.element.attr("aria-label", "Document map area");
+                var listItems = treeView.element.find("ul");
+                utils.each(listItems, function() {
+                    setNodeAccessibilityAttributes(this);
+                });
+            }
         }
         function isVisible() {
             var args = {};
@@ -2331,6 +2416,54 @@
     }
     function selectItem(item, select) {
         applyClass(select, "k-state-selected", item);
+        item.attr("aria-selected", select);
+    }
+    function addAccessibilityAttributes(editor, type, caption, additionalInfo, error) {
+        if (!additionalInfo) {
+            additionalInfo = "";
+        }
+        var label = utils.stringFormat("{0}. {1} {2}. {3}", [ caption, type, sr.ariaLabelParameter, additionalInfo ]);
+        editor.attr("aria-label", label);
+        setAccessibilityErrorAttributes(editor, error);
+    }
+    var containerTabIndex;
+    var editorsIndex = 0;
+    function setEditorTabIndex(editor) {
+        if (!containerTabIndex) {
+            var $container = $("div.trv-parameters-area-content");
+            if ($container.length > 0) {
+                var tabIndexAttr = $container.attr("tabIndex");
+                if (tabIndexAttr) {
+                    containerTabIndex = utils.tryParseInt(tabIndexAttr);
+                }
+            }
+            if (!containerTabIndex || isNaN(containerTabIndex)) {
+                containerTabIndex = 300;
+            }
+        }
+        editor.attr("tabindex", containerTabIndex + ++editorsIndex);
+    }
+    function setAccessibilityErrorAttributes(editor, error) {
+        var errToken = utils.stringFormat(" {0}:", [ sr.ariaLabelErrorMessage ]);
+        var label = editor.attr("aria-label");
+        if (!label) {
+            return;
+        }
+        var errIdx = label.indexOf(errToken);
+        if (errIdx > -1) {
+            label = label.substring(0, errIdx);
+        }
+        if (error && error != "") {
+            editor.attr("aria-required", true);
+            editor.attr("aria-invalid", true);
+            label += errToken + error;
+        } else {
+            editor.removeAttr("aria-invalid");
+        }
+        editor.attr("aria-label", label);
+    }
+    function navigatableEnabledForList(enableAccessibility) {
+        return kendo.version >= "2017.3.1018" || enableAccessibility;
     }
     trv.parameterEditors = [ {
         match: trv.parameterEditorsMatch.MultiSelect,
@@ -2353,11 +2486,20 @@
             });
             function onSelectionChanged(selection) {
                 if (initialized) {
+                    applyAriaSelected(selection);
                     notifyParameterChanged(selection);
                 }
                 var noSelection = selection.length == 0;
                 (noSelection ? $.fn.show : $.fn.hide).call($selectAll);
                 (!noSelection ? $.fn.show : $.fn.hide).call($selectNone);
+            }
+            function applyAriaSelected(selection) {
+                var children = listView.element.children();
+                utils.each(children, function() {
+                    var $item = $(this);
+                    var isSelected = selection.filter($item).length > 0;
+                    $item.attr("aria-selected", isSelected);
+                });
             }
             function notifyParameterChanged(selection) {
                 var availableValues = parameter.availableValues, values = $.map(selection, function(item) {
@@ -2385,15 +2527,31 @@
                 $(this).toggleClass("k-state-selected");
                 onSelectionChanged(getSelectedItems());
             }
+            function onKeydown(event) {
+                if (!enabled) return;
+                if (event.which != 32) {
+                    return;
+                }
+                var focused = $(listView.element).find(".k-state-focused");
+                if (focused.length > 0) {
+                    focused.toggleClass("k-state-selected");
+                    onSelectionChanged(getSelectedItems());
+                    event.preventDefault();
+                }
+            }
             function init() {
+                setEditorTabIndex($list);
                 setSelectedItems(parameter.value);
-                $(listView.element).on("click", ".listviewitem", onItemClick);
+                var element = $(listView.element);
+                element.on("mousedown", ".listviewitem", onItemClick);
+                element.on("keydown", onKeydown);
                 initialized = true;
             }
             function clear() {
                 initialized = false;
                 if (listView) {
                     $(listView.element).off("click", ".listviewitem", onItemClick);
+                    $(listView.element).off("keydown", onKeydown);
                 }
             }
             function setSelectedItems(items) {
@@ -2427,7 +2585,8 @@
                         dataSource: {
                             data: parameter.availableValues
                         },
-                        selectable: false
+                        selectable: false,
+                        navigatable: navigatableEnabledForList(options.enableAccessibility)
                     });
                     listView = $list.data("kendoListView");
                     init();
@@ -2436,7 +2595,19 @@
                     enabled = enable;
                     enableItem($list, enabled);
                 },
-                clearPendingChange: clearPendingChange
+                clearPendingChange: clearPendingChange,
+                addAccessibility: function(param) {
+                    var info = utils.stringFormat(sr.ariaLabelParameterInfo, [ param.availableValues.length ]);
+                    addAccessibilityAttributes($list, sr.ariaLabelMultiSelect, param.text, info, param.Error);
+                    $list.attr("aria-multiselectable", "true");
+                    var items = $list.find(".listviewitem");
+                    utils.each(items, function() {
+                        $(this).attr("aria-label", this.innerText);
+                    });
+                },
+                setAccessibilityErrorState: function(param) {
+                    setAccessibilityErrorAttributes($list, param.Error);
+                }
             };
         }
     }, {
@@ -2471,6 +2642,7 @@
                 onSelectionChanged(getSelectedItems());
             }
             function init() {
+                setEditorTabIndex($list);
                 setSelectedItems(parameter.value);
                 listView.bind("change", onChange);
             }
@@ -2505,10 +2677,11 @@
                         dataSource: {
                             data: parameter.availableValues
                         },
-                        selectable: true
+                        selectable: true,
+                        navigatable: navigatableEnabledForList(options.enableAccessibility)
                     });
                     listView = $list.data("kendoListView");
-                    init();
+                    init($list);
                 },
                 enable: function(enable) {
                     enabled = enable;
@@ -2520,6 +2693,17 @@
                         listView.unbind("change", onChange);
                         $list.removeClass("k-selectable");
                     }
+                },
+                addAccessibility: function(param) {
+                    var info = utils.stringFormat(sr.ariaLabelParameterInfo, [ param.availableValues.length ]);
+                    addAccessibilityAttributes($list, sr.ariaLabelSingleValue, param.text, info, param.Error);
+                    var items = $list.find(".listviewitem");
+                    utils.each(items, function() {
+                        $(this).attr("aria-label", this.innerText);
+                    });
+                },
+                setAccessibilityErrorState: function(param) {
+                    setAccessibilityErrorAttributes($list, param.Error);
                 }
             };
         }
@@ -2541,10 +2725,17 @@
                 beginEdit: function(param) {
                     parameter = param;
                     setValue(param.value);
+                    setEditorTabIndex($textArea);
                 },
                 enable: function(enable) {
                     enableItem($textArea, enable);
                     $textArea.prop("disabled", !enable);
+                },
+                addAccessibility: function(param) {
+                    addAccessibilityAttributes($textArea, sr.ariaLabelMultiValue, param.text, null, param.Error);
+                },
+                setAccessibilityErrorState: function(param) {
+                    setAccessibilityErrorAttributes($textArea, param.Error);
                 }
             };
         }
@@ -2582,10 +2773,18 @@
                 beginEdit: function(param) {
                     parameter = param;
                     setValue(param.value);
+                    setEditorTabIndex($dateTimePicker);
                 },
                 enable: function(enable) {
                     dateTimePicker.enable(enable);
                     enableItem($dateTimePicker, enable);
+                },
+                addAccessibility: function(param) {
+                    addAccessibilityAttributes($dateTimePicker, sr.ariaLabelParameterDateTime, param.text, null, param.Error);
+                    $dateTimePicker.attr("aria-live", "assertive");
+                },
+                setAccessibilityErrorState: function(param) {
+                    setAccessibilityErrorAttributes($dateTimePicker, param.Error);
                 }
             };
         }
@@ -2607,10 +2806,18 @@
                 beginEdit: function(param) {
                     parameter = param;
                     setValue(param.value);
+                    setEditorTabIndex($input);
                 },
                 enable: function(enabled) {
                     $input.prop("disabled", !enabled);
                     enableItem($input, enabled);
+                },
+                addAccessibility: function(param) {
+                    addAccessibilityAttributes($input, sr.ariaLabelParameterString, param.text, null, param.Error);
+                    $input.attr("aria-live", "assertive");
+                },
+                setAccessibilityErrorState: function(param) {
+                    setAccessibilityErrorAttributes($input, param.Error);
                 }
             };
         }
@@ -2640,10 +2847,18 @@
                     } else {
                         inputBehavior = floatInputBehavior($input);
                     }
+                    setEditorTabIndex($input);
                 },
                 enable: function(enable) {
                     $input.prop("disabled", !enable);
                     enableItem($input, enable);
+                },
+                addAccessibility: function(param) {
+                    addAccessibilityAttributes($input, sr.ariaLabelParameterNumerical, param.text, null, param.Error);
+                    $input.attr("aria-live", "assertive");
+                },
+                setAccessibilityErrorState: function(param) {
+                    setAccessibilityErrorAttributes($input, param.Error);
                 }
             };
         }
@@ -2665,10 +2880,18 @@
                 beginEdit: function(param) {
                     parameter = param;
                     setValue(param.value);
+                    setEditorTabIndex($input);
                 },
                 enable: function(enable) {
                     enableItem($input, enable);
                     $input.attr("disabled", !enable);
+                },
+                addAccessibility: function(param) {
+                    addAccessibilityAttributes($input, sr.ariaLabelParameterBoolean, param.text, null, param.Error);
+                    $input.attr("aria-live", "assertive");
+                },
+                setAccessibilityErrorState: function(param) {
+                    setAccessibilityErrorAttributes($input, param.Error);
                 }
             };
         }
@@ -2845,6 +3068,7 @@
         });
         var parameterContainerTemplate = options.templates["trv-parameter"];
         var parametersAreaVisible = options.parametersAreaVisible !== false;
+        var enableAccessibility = options.enableAccessibility;
         function createParameterContainer() {
             return $(parameterContainerTemplate);
         }
@@ -2871,11 +3095,17 @@
                         $errorMessage.html(error);
                         $error.show();
                         enablePreviewButton(false);
+                    } finally {
+                        setAccessibilityErrorState(parameter);
                     }
-                }
+                },
+                enableAccessibility: enableAccessibility
             });
             editors[parameter.id] = editor;
             editor.beginEdit(parameter);
+            if (enableAccessibility && !isHiddenParameter) {
+                editor.addAccessibility(parameter);
+            }
             if ($useDefaultValueCheckbox.length > 0) {
                 $useDefaultValueCheckbox.on("click", function() {
                     var useDefaultValue = $(this).is(":checked");
@@ -2903,6 +3133,13 @@
                 }
             }
             return $container;
+        }
+        function setAccessibilityErrorState(parameter) {
+            var editor = editors[parameter.id];
+            if (!editor || !enableAccessibility) {
+                return;
+            }
+            editor.setAccessibilityErrorState(parameter);
         }
         function enablePreviewButton(enabled) {
             if (enabled) {
@@ -2988,6 +3225,9 @@
             $content.empty();
             if (parameters.length > 0) {
                 $content.append($tempContainer.children());
+                if (enableAccessibility) {
+                    $content.attr("aria-label", "Parameters area. Contains " + parameters.length + " parameters.");
+                }
             } else {
                 $content.append(noParametersContent);
             }
@@ -3649,71 +3889,284 @@
     if (!utils) {
         throw "Missing telerikReporting.utils";
     }
-    function MainMenu(dom, options) {
-        var menu = $(dom).data("kendoMenu"), childrenL1, controller = options.controller;
+    var lastSelectedMenuItem, lastSelectedSubmenuItem;
+    function MainMenu(dom, options, otherOptions) {
+        options = $.extend({}, options, otherOptions);
+        var menu = $(dom).data("kendoMenu"), childrenL1 = dom.childNodes, controller = options.controller, enableAccessibility = options.enableAccessibility, DEFAULT_TABINDEX = 1;
         if (!menu) {
             init();
         }
-        function init() {
-            $(window).resize(function() {
-                adjustMenuItemsLevel1();
-            });
-            menu = $(dom).kendoMenu().data("kendoMenu"), menu.bind("open", onSubmenuOpen);
-            window.setTimeout(adjustMenuItemsLevel1, 100);
-        }
-        function adjustMenuItemsLevel1() {
-            if (!childrenL1) childrenL1 = dom.childNodes;
-            for (var i = childrenL1.length - 1; i >= 0; i--) {
-                var el = childrenL1[i];
-                if (el.style) {
-                    var style = el.style;
-                    var isVisible = style.display !== "none";
-                    if (!isVisible) {
-                        style.display = "";
-                    }
-                    var isReportViewerTemplate = $(el).parents(".trv-report-viewer").length > 0;
-                    if (isReportViewerTemplate) {
-                        if (el.offsetTop > 0) {
-                            style.display = "none";
-                        } else {
-                            if (isVisible) {
-                                break;
-                            }
-                        }
-                    }
+        controller.reportLoadComplete(function(e, args) {
+            if (enableAccessibility) {} else {
+                if (menu && menu._oldHoverItem) {
+                    menu._oldHoverItem.toggleClass("k-state-focused");
                 }
             }
+        });
+        function init() {
+            menu = $(dom).kendoMenu().data("kendoMenu"), menu.bind("open", onSubmenuOpen);
+            menu.bind("activate", onSubmenuActivate);
+            menu.bind("deactivate", onSubmenuDeactivate);
+            menu.element.off("keydown", onMenuKeyDown);
+            menu.element.on("keydown", onMenuKeyDown);
+            if (options.enableAccessibility) {
+                setTabIndexes();
+            }
+        }
+        function setTabIndexes() {
+            var $menus = $.find('[data-role="telerik_ReportViewer_MainMenu"]');
+            utils.each($menus, function() {
+                var $menuArea = $(this);
+                var listItems = $menuArea.find("li");
+                var menuTabIndex = 0;
+                var tabIndexAttr = $menuArea.attr("tabIndex");
+                if (tabIndexAttr) {
+                    menuTabIndex = utils.tryParseInt(tabIndexAttr);
+                    if (!menuTabIndex || isNaN(menuTabIndex)) {
+                        menuTabIndex = 0;
+                    }
+                }
+                setMenuItemsTabIndexes(listItems, menuTabIndex);
+                var pager = listItems.find('input[data-role="telerik_ReportViewer_PageNumberInput"]');
+                if (pager.length > 0) {
+                    pager.attr("tabindex", menuTabIndex);
+                }
+            });
+        }
+        function setMenuItemsTabIndexes(listItems, menuTabIndex) {
+            utils.each(listItems, function() {
+                var $item = $(this);
+                $item.attr("tabindex", menuTabIndex);
+                $item.focus(function() {
+                    $item.addClass("k-state-focused");
+                });
+                $item.blur(function() {
+                    $item.removeClass("k-state-focused");
+                });
+                var anchor = $item.children("a");
+                if (anchor.length > 0) {
+                    var $anchor = $(anchor);
+                    $anchor.attr("tabindex", -1);
+                    $item.attr("title", $anchor.attr("title"));
+                }
+                $item.off("keydown");
+                $item.on("keydown", function(event) {
+                    if (event.which == kendo.keys.ENTER) {
+                        clickOnMenuItem($item);
+                        lastSelectedMenuItem = $item;
+                    }
+                });
+            });
         }
         function onSubmenuOpen(e) {
             var $item = $(e.item);
             if ($item.children("ul[data-command-list=export-format-list]").length > 0) {
                 menu.unbind("open", onSubmenuOpen);
                 menu.append({
-                    text: sr.loadingFormats
+                    text: sr.loadingFormats,
+                    spriteCssClass: "k-icon k-loading"
                 }, $item);
-                controller.getDocumentFormats().then(fillFormats);
+                controller.getDocumentFormats().then(fillFormats).then(function() {
+                    menu.open($item);
+                });
             }
         }
         function fillFormats(formats) {
             utils.each($(dom).find("ul[data-command-list=export-format-list]"), function() {
-                var $list = $(this), $parent = $list.parents("li"), itemsToRemove = $list.children("li");
+                var $list = $(this), $parent = $list.parents("li");
+                menu.remove($list.children("li"));
+                var tabIndex = enableAccessibility ? $parent.attr("tabindex") : -1;
+                if (!tabIndex) {
+                    tabIndex = 1;
+                }
                 utils.each(formats, function() {
                     var format = this;
-                    var li = utils.stringFormat('<li><a href="#" data-command="telerik_ReportViewer_export" data-command-parameter="{name}"><span>{localizedName}</span></a></li>', format);
+                    var ariaLabel = enableAccessibility ? utils.stringFormat('aria-label="{localizedName}" ', format) : " ";
+                    var li = "<li " + ariaLabel + utils.stringFormat('tabindex="' + tabIndex + '"><a tabindex="-1" href="#" data-command="telerik_ReportViewer_export" data-command-parameter="{name}"><span>{localizedName}</span></a></li>', format);
                     menu.append(li, $parent);
                 });
-                utils.each(itemsToRemove, function() {
-                    menu.remove($(this));
+                if (enableAccessibility) {
+                    setInternalListAccessibilityKeyEvents($parent.find("li"));
+                }
+            });
+        }
+        function setInternalListAccessibilityKeyEvents(listItems) {
+            utils.each(listItems, function() {
+                var $item = $(this);
+                $item.off("keydown");
+                $item.on("keydown", function(event) {
+                    switch (event.which) {
+                      case kendo.keys.ENTER:
+                        clickOnMenuItem($item);
+                        break;
+
+                      case kendo.keys.UP:
+                        var $prev = $item.prev();
+                        if ($prev.length > 0) {
+                            $prev.focus();
+                        } else {
+                            $item.parents("li").focus();
+                        }
+                        break;
+
+                      case kendo.keys.DOWN:
+                        var $next = $item.next();
+                        if ($next.length > 0) {
+                            $next.focus();
+                        } else {
+                            $item.parent().children("li").first().focus();
+                        }
+                        break;
+                    }
                 });
             });
         }
-        controller.cssLoaded(adjustMenuItemsLevel1);
+        function clickOnMenuItem(item) {
+            if (item && item.length > 0) {
+                var anchor = item.children("a");
+                if (anchor.length > 0) {
+                    anchor.click();
+                }
+            }
+        }
+        function onSubmenuActivate(e) {
+            var $item = $(e.item);
+            focusOnFirstSubmenuItem($item);
+        }
+        function onSubmenuDeactivate(e) {
+            lastSelectedSubmenuItem = undefined;
+        }
+        function focusOnFirstSubmenuItem(parentItem) {
+            if (lastSelectedMenuItem && lastSelectedMenuItem.is(parentItem)) {
+                window.setTimeout(function() {
+                    var li = parentItem.find("li");
+                    if (li.length > 0) {
+                        li[0].focus();
+                    }
+                }, 100);
+            }
+        }
+        function onMenuKeyDown(e) {
+            switch (e.which) {
+              case kendo.keys.ENTER:
+                if (!enableAccessibility) {
+                    var $item = getFocusedItem();
+                    if ($item.length > 0) {
+                        if (isItemExportContainer($item) && lastSelectedSubmenuItem) {
+                            $item = lastSelectedSubmenuItem;
+                        }
+                        clickOnMenuItem($item);
+                    }
+                }
+                break;
+
+              case kendo.keys.RIGHT:
+                enableAccessibility ? focusNextItemAccessibilitySelection() : focusNextItemNativeMenuSelection();
+                break;
+
+              case kendo.keys.LEFT:
+                enableAccessibility ? focusPreviousItemAccessibilitySelection() : focusPreviousItemNativeMenuSelection();
+                break;
+
+              case kendo.keys.DOWN:
+              case kendo.keys.UP:
+                if (!enableAccessibility) {
+                    lastSelectedSubmenuItem = getKendoFocusedNestedItem();
+                }
+            }
+        }
+        function getFocusedItem() {
+            var $item;
+            var focusedItem = document.activeElement;
+            if (focusedItem && focusedItem.localName == "li") {
+                var items = $(childrenL1).filter("li.k-item");
+                for (var i = 0; i < items.length; i++) {
+                    var listItem = items[i];
+                    if (focusedItem === listItem) {
+                        $item = $(listItem);
+                        break;
+                    }
+                }
+            } else {
+                $item = menu.element.children("li.k-item.k-state-focused");
+                if ($item.length == 0) {
+                    $item = menu.element.children("li.k-item").first();
+                }
+            }
+            return $item;
+        }
+        function focusNextItemAccessibilitySelection() {
+            var $item = getFocusedItem();
+            if (!$item || !$item.length > 0) {
+                return;
+            }
+            var $next = $item.next();
+            if (!$next.length > 0) {
+                $next = $(childrenL1).filter("li.k-item").first();
+            }
+            $next.focus();
+        }
+        var lastKendoFocusedItem;
+        function focusNextItemNativeMenuSelection() {
+            var allItems = menu.element.children("li.k-item");
+            var $focused = allItems.filter(".k-state-focused");
+            if (kendo.version >= "2017.3.913") {
+                lastKendoFocusedItem = $focused;
+                return;
+            }
+            if ($focused.hasClass("k-state-disabled")) {
+                if (!lastKendoFocusedItem || $focused.is(lastKendoFocusedItem)) {
+                    var $next = $focused.next();
+                    if (!$next.length > 0) {
+                        $next = allItems.first();
+                    }
+                    $focused.toggleClass("k-state-focused");
+                    $next.toggleClass("k-state-focused");
+                    lastKendoFocusedItem = $next;
+                    menu._oldHoverItem = $next;
+                } else {
+                    lastKendoFocusedItem = $focused;
+                }
+            } else {
+                menu._oldHoverItem = $focused;
+                lastKendoFocusedItem = $focused;
+            }
+        }
+        function focusPreviousItemAccessibilitySelection() {
+            var $item = getFocusedItem();
+            if (!$item || !$item.length > 0) {
+                return;
+            }
+            var $prev = $item.prev();
+            if (!$prev.length > 0) {
+                $prev = $(childrenL1).filter("li.k-item").last();
+            }
+            $prev.focus();
+        }
+        function focusPreviousItemNativeMenuSelection() {
+            var $focused = menu.element.children("li.k-item.k-state-focused");
+            lastKendoFocusedItem = $focused;
+        }
+        function getKendoFocusedNestedItem() {
+            var $focused = menu.element.find('li.k-item.k-state-focused [data-command="telerik_ReportViewer_export"]');
+            if ($focused.length == 1) {
+                return $focused.parent("li");
+            }
+            return undefined;
+        }
+        function isItemExportContainer(item) {
+            if (item.length == 0) {
+                return;
+            }
+            var id = item.attr("id");
+            return id == "main-menu-export-command" || id == "side-menu-export-command";
+        }
     }
     var pluginName = "telerik_ReportViewer_MainMenu";
-    $.fn[pluginName] = function(options) {
+    $.fn[pluginName] = function(options, otherOptions) {
         return utils.each(this, function() {
             if (!$.data(this, pluginName)) {
-                $.data(this, pluginName, new MainMenu(this, options));
+                $.data(this, pluginName, new MainMenu(this, options, otherOptions));
             }
         });
     };
@@ -3730,44 +4183,88 @@
         throw "Missing telerikReporting.utils";
     }
     var loadingFormats, panelBar;
-    function SideMenu(dom, options) {
+    function SideMenu(dom, options, otherOptions) {
+        options = $.extend({}, options, otherOptions);
+        var enableAccessibility = options.enableAccessibility, lastSelectedMenuItem, DEFAULT_TABINDEX = 3;
+        var controller = options.controller;
+        if (!controller) {
+            throw "No controller (telerikReporting.ReportViewerController) has been specified.";
+        }
         init(dom);
         function init(root) {
-            panelBar = $(root).children("ul").kendoPanelBar().data("kendoPanelBar");
+            var $root = $(root);
+            panelBar = $root.children("ul").kendoPanelBar().data("kendoPanelBar");
             panelBar.bind("expand", onSubmenuOpen);
-            enableCloseOnClick(root);
-            $(root).click(function(e) {
+            panelBar.element.off("keydown", onPanelKeyDown);
+            panelBar.element.on("keydown", onPanelKeyDown);
+            setTabIndexes($root);
+            enableCloseOnClick($root);
+            $root.click(function(e) {
                 if (e.target == root) {
                     $(options.controller).trigger(options.controller.Events.TOGGLE_SIDE_MENU);
                 }
             });
+        }
+        $(controller).on(controller.Events.TOGGLE_SIDE_MENU, function() {
+            setSideMenuVisibility();
+            if (enableAccessibility) {
+                panelBar.element.focus();
+            }
+        });
+        function setSideMenuVisibility() {
+            var $root = panelBar.element.parent();
+            var hidden = $root.position().left < 0 || !$root.is(":visible");
+            if (hidden) {
+                $root.show();
+            } else {
+                window.setTimeout(function() {
+                    $root.hide();
+                }, 500);
+            }
         }
         function onSubmenuOpen(e) {
             var $item = $(e.item);
             if ($item.children("ul[data-command-list=export-format-list]").length > 0) {
                 panelBar.unbind("expand", onSubmenuOpen);
                 panelBar.append({
-                    text: sr.loadingFormats
+                    text: sr.loadingFormats,
+                    spriteCssClass: "k-icon k-loading"
                 }, $item);
-                options.controller.getDocumentFormats().then(fillFormats);
+                options.controller.getDocumentFormats().then(fillFormats).then(function() {
+                    panelBar.expand($item);
+                });
             }
         }
         function fillFormats(formats) {
             utils.each($(dom).find("ul[data-command-list=export-format-list]"), function() {
-                var $list = $(this), $parent = $list.parents("li"), itemsToRemove = $list.children("li");
+                var $list = $(this), $parent = $list.parents("li");
+                panelBar.remove($list.children("li"));
+                var tabIndex = $parent.attr("tabindex");
+                if (!tabIndex) {
+                    tabIndex = DEFAULT_TABINDEX;
+                }
                 utils.each(formats, function(i) {
                     var format = this;
-                    var li = utils.stringFormat('<li><a href="#" data-command="telerik_ReportViewer_export" data-command-parameter="{name}"><span>{localizedName}</span></a></li>', format);
+                    var ariaLabel = enableAccessibility ? utils.stringFormat('aria-label="{localizedName}" ', format) : " ";
+                    var li = "<li " + ariaLabel + utils.stringFormat('tabindex="' + tabIndex + '"><a tabindex="-1" href="#" data-command="telerik_ReportViewer_export" data-command-parameter="{name}"><span>{localizedName}</span></a></li>', format);
                     panelBar.append(li, $parent);
                 });
+                setListItemsTabIndex($parent.find("li"), tabIndex);
                 enableCloseOnClick($parent);
-                utils.each(itemsToRemove, function() {
-                    panelBar.remove($(this));
-                });
             });
         }
+        function focusOnFirstSubmenuItem(parentItem) {
+            if (lastSelectedMenuItem && lastSelectedMenuItem.is(parentItem)) {
+                window.setTimeout(function() {
+                    var li = parentItem.find("li");
+                    if (li.length > 0) {
+                        li[0].focus();
+                    }
+                }, 100);
+            }
+        }
         function enableCloseOnClick(root) {
-            utils.each($(root).find("li"), function() {
+            utils.each(root.find("li"), function() {
                 var isLeaf = $(this).children("ul").length == 0;
                 if (isLeaf) {
                     $(this).children("a").click(function() {
@@ -3776,12 +4273,98 @@
                 }
             });
         }
+        function setTabIndexes(root) {
+            if (!root) {
+                return;
+            }
+            var $list = root.children("ul");
+            var parentTabIndex = root.attr("tabindex");
+            var listIndex = parentTabIndex ? parentTabIndex : DEFAULT_TABINDEX;
+            setListItemsTabIndex($list, listIndex);
+        }
+        function setListItemsTabIndex(list, tabIndex) {
+            list.attr("tabindex", tabIndex);
+            var items = list.find("li");
+            utils.each(items, function() {
+                var $item = $(this);
+                $item.attr("tabindex", tabIndex);
+                var anchor = $item.children("a");
+                if (anchor.length > 0) {
+                    var $anchor = $(anchor);
+                    $anchor.attr("tabindex", -1);
+                }
+                $item.focus(function() {
+                    var anchor = $item.children("a");
+                    if (anchor.length > 0) {
+                        anchor.addClass("k-state-focused");
+                    }
+                });
+                $item.blur(function() {
+                    var anchor = $item.children("a");
+                    if (anchor.length > 0) {
+                        anchor.removeClass("k-state-focused");
+                    }
+                });
+                $item.off("keydown", onItemKeyDown);
+                $item.on("keydown", onItemKeyDown);
+            });
+        }
+        function onPanelKeyDown(e) {
+            if (e.which == kendo.keys.ENTER) {
+                var $item;
+                var isSelectedFocusedItem = false;
+                var focusedItem = document.activeElement;
+                if (focusedItem && focusedItem.localName == "li") {
+                    var items = panelBar.element.find("li.k-item");
+                    for (var i = 0; i < items.length; i++) {
+                        var listItem = items[i];
+                        if (focusedItem === listItem) {
+                            $item = $(listItem);
+                            isSelectedFocusedItem = true;
+                            break;
+                        }
+                    }
+                } else {
+                    $item = panelBar.select();
+                }
+                if (!$item || !$item.length > 0) {
+                    return;
+                }
+                handleItemSelect($item, isSelectedFocusedItem);
+            }
+        }
+        function onItemKeyDown(e) {
+            if (e.which == kendo.keys.ENTER) {
+                handleItemSelect($(e.target), false);
+            }
+        }
+        function handleItemSelect(item, handleExpandCollapse) {
+            if (!item.length > 0) {
+                return;
+            }
+            lastSelectedMenuItem = item;
+            var isLeaf = item.children("ul").length == 0;
+            if (!isLeaf) {
+                if (handleExpandCollapse) {
+                    if (item.hasClass("k-state-active")) {
+                        panelBar.collapse(item);
+                    } else {
+                        panelBar.expand(item);
+                    }
+                }
+            } else {
+                var $anchor = item.find("a");
+                if ($anchor.length > 0) {
+                    $anchor[0].click();
+                }
+            }
+        }
     }
     var pluginName = "telerik_ReportViewer_SideMenu";
-    $.fn[pluginName] = function(options) {
+    $.fn[pluginName] = function(options, otherOptions) {
         return utils.each(this, function() {
             if (!$.data(this, pluginName)) {
-                $.data(this, pluginName, new SideMenu(this, options));
+                $.data(this, pluginName, new SideMenu(this, options, otherOptions));
             }
         });
     };
@@ -4074,6 +4657,226 @@
 
 (function(trv, $, window, document, undefined) {
     "use strict";
+    var sr = trv.sr;
+    if (!sr) {
+        throw "Missing telerikReportViewer.sr";
+    }
+    var utils = trv.utils;
+    if (!utils) {
+        throw "Missing telerikReportViewer.utils";
+    }
+    var defaultOptions = {};
+    function accessibility(options) {
+        var controller, pageInitialized = false, areas, lastArea, keyMap = {
+            CONFIRM_KEY: 13,
+            CONTENT_AREA_KEY: 67,
+            DOCUMENT_MAP_AREA_KEY: 68,
+            MENU_AREA_KEY: 77,
+            PARAMETERS_AREA_KEY: 80
+        };
+        options = $.extend({}, defaultOptions, options);
+        controller = options.controller;
+        if (!controller) {
+            throw "No controller (telerikReporting.ReportViewerController) has been specified.";
+        }
+        controller.reportLoadComplete(onReportLoadComplete).pageReady(function(event, page) {
+            initPage(page);
+            pageInitialized = true;
+        }).error(function(e, message) {
+            focusOnErrorMessage();
+            window.setTimeout(setAccessibilityUI, 500);
+        }).updateUI(function(e) {
+            if (pageInitialized) {
+                setPageSelector();
+                decorateMenuItems();
+            }
+        });
+        function onReportLoadComplete(e, args) {
+            setAccessibilityUI();
+            var content = findContentArea();
+            if (content.length > 0) {
+                content.focus();
+            }
+        }
+        function setAccessibilityUI() {
+            if (!areas) {
+                initAreas();
+                $(document.body).off("keydown", processKeyDown);
+                $(document.body).on("keydown", processKeyDown);
+            }
+        }
+        function focusOnErrorMessage() {
+            var selectorChain = [ "div.trv-pages-area", "div.trv-error-message" ];
+            var $errMsg = findElement(selectorChain);
+            if ($errMsg.length == 0) {
+                return;
+            }
+            $errMsg.attr("tabIndex", 0);
+            $errMsg.focus();
+        }
+        function initPage(page) {
+            if (!page) {
+                return;
+            }
+            setAccessibilityUI();
+            var area = areas[keyMap.CONTENT_AREA_KEY];
+            setContentAreaKeyDown(area);
+        }
+        function setPageSelector() {
+            var $pagers = $(".trv-report-pager");
+            if ($pagers.length > 0) {
+                var pageNumber = controller.currentPageNumber();
+                var pageCount = controller.pageCount();
+                utils.each($pagers, function() {
+                    var $pager = $(this);
+                    $pager.attr("aria-label", utils.stringFormat(sr.ariaLabelPageNumberSelector, [ pageNumber, pageCount ]));
+                    var $pageInputs = $pager.find("input[data-role=telerik_ReportViewer_PageNumberInput]");
+                    if ($pageInputs.length > 0) {
+                        utils.each($pageInputs, function() {
+                            var $this = $(this);
+                            $this.attr("aria-label", sr.ariaLabelPageNumberEditor);
+                            $this.attr("min", "1");
+                            $this.attr("max", "" + pageCount);
+                        });
+                    }
+                });
+            }
+        }
+        function initAreas() {
+            areas = {};
+            areas[keyMap.DOCUMENT_MAP_AREA_KEY] = findDocumentMapArea();
+            areas[keyMap.MENU_AREA_KEY] = findMenuArea();
+            areas[keyMap.CONTENT_AREA_KEY] = findContentArea();
+            var parametersArea = findParametersArea();
+            if (parametersArea) {
+                areas[keyMap.PARAMETERS_AREA_KEY] = parametersArea;
+                setParameterEditorsKeyDown(parametersArea);
+            }
+        }
+        function findContentArea() {
+            return findElement([ "div[data-role=telerik_ReportViewer_PagesArea]" ]);
+        }
+        function findDocumentMapArea() {
+            return findElement([ "div[data-role=telerik_ReportViewer_DocumentMapArea]", "div[data-role=treeview]" ]);
+        }
+        function findMenuArea() {
+            return findElement("ul[data-role=telerik_ReportViewer_MainMenu]");
+        }
+        function findParametersArea() {
+            return findElement([ "div[data-role=telerik_ReportViewer_ParametersArea]", "div.trv-parameters-area-content" ]);
+        }
+        function findElement(selectorChain) {
+            if (selectorChain.constructor != Array) {
+                selectorChain = [ selectorChain ];
+            }
+            var $area = $(selectorChain[0]);
+            for (var i = 1; i < selectorChain.length; i++) {
+                $area = $area.find(selectorChain[i]);
+            }
+            return $area;
+        }
+        function processKeyDown(event) {
+            if (!areas) {
+                return;
+            }
+            if (!(event.altKey && event.ctrlKey)) {
+                return;
+            }
+            var currentArea = areas[event.which];
+            if (!currentArea) {
+                return;
+            }
+            if (!IsAreaContainerVisible(currentArea.parent())) {
+                return;
+            }
+            var className = "k-state-focused";
+            if (lastArea) {
+                lastArea.removeClass(className);
+            }
+            currentArea.addClass(className);
+            currentArea.focus();
+            lastArea = currentArea;
+            event.preventDefault();
+        }
+        function setParameterEditorsKeyDown(parametersAreaContent) {
+            if (parametersAreaContent.length == 0) {
+                return;
+            }
+            var $paramsArea = parametersAreaContent.parent("div[data-role=telerik_ReportViewer_ParametersArea]");
+            if (!IsAreaContainerVisible($paramsArea)) {
+                return;
+            }
+            utils.each(parametersAreaContent.children(), function() {
+                $(this).keydown(function(event) {
+                    if (event.which == keyMap.CONFIRM_KEY) {
+                        var paramsButton = $paramsArea.find("button.trv-parameters-area-preview-button");
+                        paramsButton.focus();
+                        event.preventDefault();
+                    }
+                });
+            });
+        }
+        function IsAreaContainerVisible(container) {
+            return container && !container.hasClass("hidden");
+        }
+        function setContentAreaKeyDown(contentArea) {
+            if (!contentArea) {
+                return;
+            }
+            var actions = contentArea.find("div [data-reporting-action]");
+            if (!actions.length > 0) {
+                return;
+            }
+            utils.each(actions, function() {
+                var $action = $(this);
+                $action.keydown(function(event) {
+                    if (event.which == keyMap.CONFIRM_KEY) {
+                        $action.click();
+                    }
+                });
+            });
+        }
+        function decorateMenuItems() {
+            var menuAreas = areas[keyMap.MENU_AREA_KEY];
+            if (!menuAreas) {
+                return;
+            }
+            utils.each(menuAreas, function() {
+                var $menu = $(this);
+                var menuItems = $menu.children("li.k-item");
+                utils.each(menuItems, function() {
+                    var $menuItem = $(this);
+                    if (!$menuItem.hasClass("trv-report-pager")) {
+                        var expandable = $menuItem.find("ul").length > 0 ? utils.stringFormat(". {0}", [ sr.ariaLabelExpandable ]) : "";
+                        var selected = $menuItem.hasClass("k-state-selected") ? ". Selected" : "";
+                        var label = $menuItem.attr("title") + expandable + selected;
+                        $menuItem.attr("aria-label", label);
+                        if ($menuItem.hasClass("k-state-disabled")) {
+                            $menuItem.attr("aria-disabled", "true");
+                        } else {
+                            $menuItem.removeAttr("aria-disabled");
+                        }
+                    }
+                });
+            });
+        }
+        function setKeyMap(keyMapValues) {
+            keyMap = keyMapValues;
+            areas = undefined;
+        }
+        function getKeyMap() {
+            return keyMap;
+        }
+        return {
+            getKeyMap: getKeyMap,
+            setKeyMap: setKeyMap
+        };
+    }
+    trv.accessibility = accessibility;
+})(window.telerikReportViewer = window.telerikReportViewer || {}, jQuery, window, document);
+
+(function(trv, $, window, document, undefined) {
+    "use strict";
     if (!$) {
         alert("jQuery is not loaded. Make sure that jQuery is included.");
     }
@@ -4260,6 +5063,12 @@
             },
             pageNumber: function() {
                 return stateItem("pageNumber", arguments);
+            },
+            enableAccessibility: function() {
+                return value("enableAccessibility", arguments);
+            },
+            accessibilityKeyMap: function() {
+                return stateItem("accessibilityKeyMap", arguments);
             }
         });
         return _this;
@@ -4280,14 +5089,15 @@
             disabledButtonClass: null,
             checkedButtonClass: null,
             parametersAreaVisible: true,
-            documentMapVisible: true
+            documentMapVisible: true,
+            enableAccessibility: false
         };
     }
     function ReportViewer(dom, options) {
         if (!window.kendo) {
             alert("Kendo is not loaded. Make sure that Kendo is included.");
         }
-        var $placeholder = $(dom), templates = {}, scripts = {}, persistanceKey = options.id || "#" + $placeholder.attr("id");
+        var $placeholder = $(dom), templates = {}, scripts = {}, persistanceKey = options.id || "#" + $placeholder.attr("id"), accessibility;
         if (!validateOptions(options)) {
             return;
         }
@@ -4300,7 +5110,8 @@
         var settings = new ReportViewerSettings(persistanceKey, options.persistSession ? window.sessionStorage : new MemStorage(), {
             scale: options.scale,
             scaleMode: options.scaleMode,
-            printMode: options.printMode ? options.printMode : options.directPrint
+            printMode: options.printMode ? options.printMode : options.directPrint,
+            enableAccessibility: options.enableAccessibility
         });
         var serviceClientOptions = {};
         if (options.reportServer) {
@@ -4321,9 +5132,6 @@
                 serviceClient: client,
                 settings: settings
             });
-            if (options.authenticationToken) {
-                controller.setAuthenticationToken(options.authenticationToken);
-            }
         }
         var history = new trv.HistoryManager({
             controller: controller,
@@ -4394,6 +5202,16 @@
             },
             unbind: function(eventName, eventHandler) {
                 eventBinder(eventName, eventHandler, false);
+            },
+            accessibilityKeyMap: function(keyMap) {
+                if (accessibility) {
+                    if (keyMap) {
+                        accessibility.setKeyMap(keyMap);
+                        return viewer;
+                    }
+                    return accessibility.getKeyMap();
+                }
+                return undefined;
             },
             commands: commands
         };
@@ -4487,6 +5305,7 @@
             attachEvents();
             attachEventHandlers();
             initFromStorage();
+            initAccessibility(options);
         }
         function initFromStorage() {
             var vm = settings.viewMode();
@@ -4495,6 +5314,7 @@
             var sm = settings.scaleMode();
             var dm = settings.documentMapVisible();
             var pa = settings.parametersAreaVisible();
+            var am = settings.accessibilityKeyMap();
             controller.viewMode(vm ? vm : options.viewMode);
             controller.printMode(pm ? pm : options.printMode);
             controller.scale({
@@ -4529,6 +5349,32 @@
                 controller.getParametersAreaState(args);
                 settings.parametersAreaVisible(args.visible);
             });
+        }
+        function initAccessibility(options) {
+            if (options.enableAccessibility) {
+                accessibility = new trv.accessibility({
+                    controller: controller,
+                    templates: templates
+                });
+                var am = options.accessibilityKeyMap;
+                if (am) {
+                    accessibility.setKeyMap(am);
+                }
+                settings.contentTabIndex = getTemplateContentTabIndex();
+            }
+        }
+        function getTemplateContentTabIndex() {
+            var pageAreaSelector = "div.trv-pages-area";
+            try {
+                var pagesArea$ = $placeholder.find(pageAreaSelector);
+                if (pagesArea$.length == 0) {
+                    throw "Selector " + pageAreaSelector + " did not return a result.";
+                }
+                return parseInt(pagesArea$.attr("tabindex"));
+            } catch (e) {
+                if (console) console.log(e);
+                return 0;
+            }
         }
         function start() {
             var pendingRefresh = false;
@@ -4600,6 +5446,9 @@
             if (err) {
                 utils.logError(err);
             } else {
+                if (options.authenticationToken) {
+                    controller.setAuthenticationToken(options.authenticationToken);
+                }
                 templateCache.load(options.templateUrl, svcApiUrl, client).catch(function() {
                     $placeholder.html(utils.stringFormat(sr.errorLoadingTemplates, [ utils.escapeHtml(options.templateUrl) ]));
                     return Promise.reject();
@@ -4630,4 +5479,4 @@
     };
     trv.ReportViewer = ReportViewer;
 })(window.telerikReportViewer = window.telerikReportViewer || {}, jQuery, window, document);
-/* DO NOT MODIFY OR DELETE THIS LINE! UPGRADE WIZARD CHECKSUM 4260605DE175EB0FF9022DB60E999344 */
+/* DO NOT MODIFY OR DELETE THIS LINE! UPGRADE WIZARD CHECKSUM B8C3BAC0B691EB849490C4D32EAD6EF2 */
