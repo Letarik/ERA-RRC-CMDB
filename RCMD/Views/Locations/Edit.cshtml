@@ -7,7 +7,7 @@
 <div id="regional-sales" class="main-section-content row">
     <div id="topProductsContainer">
         <p>
-            <h4 align="right"><a href="@(Url.Action("Index", "Users"))" alt="Home"><i class="material-icons md-18">home</i></a>&nbsp;&nbsp;<a href="@(Url.Action("Index", "Locations"))" alt="List"><i class="material-icons md-18">list</i></a> &nbsp;&nbsp;<a href="@(Url.Action("Create", "Locations"))" alt="Create"><i class="material-icons md-18">create</i></a>&nbsp;&nbsp; <a href="@(Url.Action("Index","Home"))" align="right"><i class="material-icons md-18">power_settings_new</i></a></h4>
+            <h4 align="right"><a href="@(Url.Action("Index", "Users"))" alt="Home"><i class="material-icons md-18">home</i></a>&nbsp;&nbsp;<a href="@(Url.Action("Index", "Locations"))" alt="List"><i class="material-icons md-18">list</i></a> &nbsp;&nbsp;<a href="@(Url.Action("Create", "Locations"))" alt="Create"><i class="material-icons md-18">create</i></a>&nbsp;&nbsp; <a href="@(Url.Action("Index", "Home"))" align="right"><i class="material-icons md-18">power_settings_new</i></a></h4>
         </p>
         <br />
         @using (Html.BeginForm("Edit", "Locations", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -55,7 +55,7 @@
                         <td>
                             <div class="container-narrow">
                                 <div class="col-md-13">
-                                    <input type="submit" value="Save" class="btn btn-small btn-primary" style="width:150px; height:35px;" />
+                                    <input type="submit" value="Save" class="btn btn-small btn-primary" style="width:150px; height:35px;"/>
                                 </div>
                             </div>
                         </td>
@@ -111,9 +111,9 @@
                             <div class="container-narrow">
                                 @*@Html.LabelFor(model => model.Estimated_Quantity, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                 <div class="col-md-13">
-                                    @*@Html.TextArea("Material_Description")*@
+                                 
                                     <textarea class="form-control" name="Material_Description" placeholder="Material Description" cols="30">@Model.Material_Description</textarea>
-                                    @*@Html.ValidationMessageFor(model => model.Material_Description, "", new { @class = "text-danger" })*@
+                                  
                                 </div>
                             </div>
                         </td>
@@ -121,9 +121,19 @@
                             <div class="container-narrow">
                                 @*@Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                 <div class="col-md-13">
-                                    <input type="file" name="postedFile" />
-                                    @*@Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control", placeholder = "Photo", tabindex = 1 } })
-                                    @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })*@
+                                   <div id="myDIV" style="display:block;">
+                                        <a onclick="myFunction()" alt="Edit Photo" href="#">Edit Photo </a>
+                                        <img src="~/Uploads/@Model.Photo" alt="Captured Photo" height="70x" width="120px" />
+                                        @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control", @value= ViewBag.Photo, type = "hidden", placeholder = "Photo", tabindex = 1} })
+                                       
+                                    </div>
+                                   
+                                    <div id="fileInput" style="display:none;">
+                                        <input class="form-control" type="file" name="postedFile" placeholder="Upload Photo" />
+                                        @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                                    </div>
+                                   
+                                 
                                 </div>
                             </div>
                         </td>
@@ -138,5 +148,19 @@
 
         </div>
     </div>
-
-
+<script>
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    var y = document.getElementById("fileInput");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+    }
+    else 
+    {
+        x.style.display = "none";
+        y.style.display = "block";
+    }
+    
+}
+</script>

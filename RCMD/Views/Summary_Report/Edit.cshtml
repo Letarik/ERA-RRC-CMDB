@@ -22,8 +22,8 @@
                                 <div class="col-md-13">
 
                                     @*@Html.LabelFor(model => model.Road_Sction, htmlAttributes: new { @class = "control-label col-md-2" })*@
-
-                                    @Html.EditorFor(model => model.Location.Road_Section, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.DropDownList("Location_ID", null, htmlAttributes: new { @class = "form-control", placeholder = "Location ID", tabindex = 1 })
+                                    @*@Html.EditorFor(model => model.Location_ID, new { htmlAttributes = new { @class = "form-control", placeholder = "Road Section", tabindex = 1 } })*@
                                     @Html.ValidationMessageFor(model => model.Location.Road_Section, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
 
                                     @*@Html.LabelFor(model => model.Quarry_Area, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.Quarry_Area, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Quarry_Area, new { htmlAttributes = new { @class = "form-control", placeholder = "Quarry Area", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.Quarry_Area, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.Chanage, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.Chanage, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Chanage, new { htmlAttributes = new { @class = "form-control", placeholder = "Chanage", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.Chanage, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.Offset_Distance, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.Offset_Distance, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Offset_Distance, new { htmlAttributes = new { @class = "form-control", placeholder = "Offset Distance", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.Offset_Distance, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control", placeholder = "Latitude", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.Longtiude, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.Longtiude, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Longtiude, new { htmlAttributes = new { @class = "form-control", placeholder = "Longtiude", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.Longtiude, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.Eatimated_Quantiy, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.Eatimated_Quantiy, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Eatimated_Quantiy, new { htmlAttributes = new { @class = "form-control", placeholder = "Estimated Quantity", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.Eatimated_Quantiy, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.LL, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.LL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.LL, new { htmlAttributes = new { @class = "form-control", placeholder = "LL Index", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.LL, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.PL, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.PI, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.PI, new { htmlAttributes = new { @class = "form-control", placeholder = "PI Index", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.PI, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.SC, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.SC, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.SC, new { htmlAttributes = new { @class = "form-control", placeholder = "SC", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.SC, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.PP, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.PP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.PP, new { htmlAttributes = new { @class = "form-control", placeholder = "PP", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.PP, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.GL, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.GM, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.GM, new { htmlAttributes = new { @class = "form-control", placeholder = "GM", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.GM, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                                 <div class="col-md-13">
                                     @* @Html.LabelFor(model => model.PM, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.PM, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.PM, new { htmlAttributes = new { @class = "form-control", placeholder = "PM", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.PM, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                                 <div class="col-md-13">
                                     @*@Html.LabelFor(model => model.OMC, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-                                    @Html.EditorFor(model => model.OMC, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.OMC, new { htmlAttributes = new { @class = "form-control", placeholder = "OMC", tabindex = 1 } })
                                     @Html.ValidationMessageFor(model => model.OMC, "", new { @class = "text-danger" })
                                 </div>
                             </div>

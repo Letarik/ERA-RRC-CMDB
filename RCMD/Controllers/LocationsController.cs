@@ -16,7 +16,7 @@ namespace RCMD.Views
     public class LocationsController : Controller
     {
         private NRCMDBEntities db = new NRCMDBEntities();
-
+        private int location_id; 
         // GET: Locations
         public ActionResult Index()
         {
@@ -109,6 +109,9 @@ namespace RCMD.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Location location = db.Locations.Find(id);
+          
+            location_id = (int)location.ID;
+            ViewBag.Photo = new SelectList(db.Locations.Where(g => g.ID == location_id).ToList(), "ID", "Photo");
             if (location == null)
             {
                 return HttpNotFound();
@@ -143,6 +146,7 @@ namespace RCMD.Views
                 postedFile.SaveAs(Path.Combine(path, Path.GetFileName(postedFile.FileName)));
                 ViewBag.Message = "File uploaded successfully.";
             }
+            
             if (ModelState.IsValid)
             {
                 location.Date_Sampled = DateTime.Now;

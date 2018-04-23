@@ -13,7 +13,7 @@ namespace RCMD.Views
     public class Summary_ReportController : Controller
     {
         private NRCMDBEntities db = new NRCMDBEntities();
-
+        private int location_id;
         // GET: Summary_Report
         public ActionResult Index()
         {
@@ -67,6 +67,8 @@ namespace RCMD.Views
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Summary_Report summary_Report = db.Summary_Report.Find(id);
+            location_id = (int)summary_Report.Location_ID;
+            ViewBag.Location_ID = new SelectList(db.Locations.Where(g => g.ID == location_id).ToList(), "ID", "Road_Section");
             if (summary_Report == null)
             {
                 return HttpNotFound();
@@ -79,7 +81,7 @@ namespace RCMD.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Road_Sction,Quarry_Area,Chanage,Offset_Distance,Latitude,Longtiude,Eatimated_Quantiy,LL,PI,SC,PP,GM,PM,OMC,MDD,CBR,SWELL,ACV,TFV,LAA,FI,SGR,WAT,ST,SEVT,Purpose_of_Material")] Summary_Report summary_Report)
+        public ActionResult Edit([Bind(Include = "ID,Location_ID,Quarry_Area,Chanage,Offset_Distance,Latitude,Longtiude,Eatimated_Quantiy,LL,PI,SC,PP,GM,PM,OMC,MDD,CBR,SWELL,ACV,TFV,LAA,FI,SGR,WAT,ST,SEVT,Purpose_of_Material")] Summary_Report summary_Report)
         {
             if (ModelState.IsValid)
             {
