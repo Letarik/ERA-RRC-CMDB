@@ -40,9 +40,9 @@
                     <h1 id="dash-logo" class="center-block"><img src="@Url.Content("~/Content/era_logo.png")" style="width:40px;height:40px;" alt="Logo">ERA&#183;RCM&#183;Dash</h1>
                     <div class="collapse navbar-collapse" id="sidebar-nav" role="navigation">
                         <ul class="nav">
-                            <li id="locatinos"><a href="#"><i class="material-icons md-18">add_location</i>Material Locations</a></li>
-                            <li id="test"><a href="#"><i class="material-icons md-18">list&nbsp;</i>Test Results</a></li>
-                            <li id="reprots"><a href="#"><i class="material-icons">report&nbsp;</i>Reports</a></li>
+                            <li id="locatinos"><a href="@(Url.Action("Create","Locations"))"><i class="material-icons md-18">add_location</i>Material Locations</a></li>
+                            <li id="test"><a href="@(Url.Action("Create","Summary_Report"))"><i class="material-icons md-18">list&nbsp;</i>Test Results</a></li>
+                            <li id="reprots"><a href="@(Url.Action("Index","~/Report.Interface"))"><i class="material-icons">report&nbsp;</i>Reports</a></li>
                             <li id="maps"><a href="#"><i class="material-icons">place</i>Maps</a></li>
                             <li id="About"><a href="#"><span class="icon icon-info"></span>About</a></li>
                         </ul>

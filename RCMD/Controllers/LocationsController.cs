@@ -97,7 +97,7 @@ namespace RCMD.Views
                      //db.Locations.Add(location);
                      db.SaveChanges();
             //  return RedirectToAction("Index");
-            return RedirectToAction("Index", "Locations");
+            return RedirectToAction("Create", "Summary_Report");
             //return View(location);
         }
 
